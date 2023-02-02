@@ -54,8 +54,9 @@ export function User() {
             <span>{user.email}</span>
           </p>
         </div>
-        <button type="button" onClick={() => submit()}>Выйти</button>
+
       </div>
+      <button className={style.button} type="button" onClick={() => submit()}>Выйти</button>
     </div>
   )
 }
