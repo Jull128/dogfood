@@ -16,14 +16,15 @@ function App() {
 
   const [isAuth, setIsAuth] = useState(false);
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token')
-  //   if (token) {
-  //     setIsAuth(true)
-  //     navigate('products')
-  //   }
-  // }, [navigate])
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      setIsAuth(true)
 
+    }
+  }, [])
+
+  const path = window.location.pathname
 
   const onFinish = async (values) => {
     const res = await api.auth(values);
@@ -41,7 +42,7 @@ function App() {
       <Content >
         <Outlet />
 
-        {!isAuth && <AuthForm onFinish={onFinish} />}
+        {path !== '/signup' && !isAuth && <AuthForm onFinish={onFinish} />}
       </Content>
 
       <Footer />

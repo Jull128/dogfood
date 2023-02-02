@@ -20,7 +20,7 @@ export function RegForm() {
 
     const submitHandler = async (values) => {
         await mutateAsync(values)
-        navigate('/products')
+        navigate('/')
     }
 
     return (

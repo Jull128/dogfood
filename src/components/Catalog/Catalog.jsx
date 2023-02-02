@@ -1,16 +1,6 @@
-// import { Card, Space } from 'antd';
-// import { useEffect } from 'react';
 import style from './style.module.css'
-// const { Meta } = Card;
-
-
-
 
 export function Catalog({ products }) {
-
-    // useEffect(() => {
-    //     console.log(products);
-    // }, [products])
 
     return (
         products.products.map(product => {
