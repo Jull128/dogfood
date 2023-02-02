@@ -1,11 +1,12 @@
 import { useNavigate, Navigate, Outlet, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { api } from './api/api';
 import { AuthForm } from './components/AuthForm/AuthForm';
 import { Layout } from 'antd';
 import { Content } from 'antd/es/layout/layout';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
+import { UserContext } from './context/Context';
 
 
 

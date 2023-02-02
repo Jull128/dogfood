@@ -1,41 +1,31 @@
-import { Button } from 'antd';
-import { useLocation, useParams } from 'react-router-dom';
-import style from './style.module.css'
+import { useEffect, useState } from "react"
+import { api } from "../../api/api";
+
+import { InfoUser } from '../../components/InfoUser/InfoUser'
+
 
 export function User() {
-    const location = useLocation();
-    const { userId } = useParams();
+  const [user, setUser] = useState()
 
-    return (
-<div className={stylesUser.container}>
-      <div><h2>Личный кабинет</h2></div>
-      <div className={style.block}>
-        <div className={style.avatar}><img src={user.avatar} alt="" /></div>
-        <div>
-          <p>
-            Фамилия Имя :
-            {' '}
-            <span>{ user.name}</span>
-          </p>
-          <p>
-            Тип :
-            {' '}
-            <span>{user.about}</span>
-          </p>
-          <p>
-            группа :
-            {' '}
-            <span>{user.group}</span>
-          </p>
-          <p>
-            email :
-            {' '}
-            <span>{user.email}</span>
-          </p>
-          <button type="button" onClick={() => submit()}>Выйти</button>
-        </div>
+  useEffect(() => {
+    const fetchData = async () => {
+      const token = localStorage.getItem('token');
+      // const res = await api.allUsers(token);
+      const res = await api.me(token);
+      const responce = await res.json()
 
-      </div>
+      setUser(responce)
+
+      console.log(responce);
+    }
+
+
+    fetchData()
+  }, [])
+
+  return (
+    <div>
+      <InfoUser user={user} />
     </div>
-    )
-} 
+  )
+}
