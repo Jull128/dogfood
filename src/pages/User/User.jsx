@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { api } from "../../api/api";
 import style from './style.module.css'
 
 
 export function User() {
+  const navigate = useNavigate()
   const [user, setUser] = useState([])
+
+  function submit() {
+    localStorage.clear()
+    navigate('/')
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,9 +23,9 @@ export function User() {
       setUser(responce)
     }
 
-
     fetchData()
   }, [])
+
 
   return (
     <div className={style.container}>
@@ -47,7 +54,7 @@ export function User() {
             <span>{user.email}</span>
           </p>
         </div>
-
+        <button type="button" onClick={() => submit()}>Выйти</button>
       </div>
     </div>
   )

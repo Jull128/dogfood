@@ -6,7 +6,6 @@ import { Layout } from 'antd';
 import { Content } from 'antd/es/layout/layout';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
-import { UserContext } from './context/Context';
 
 
 
@@ -20,7 +19,6 @@ function App() {
     const token = localStorage.getItem('token')
     if (token) {
       setIsAuth(true)
-
     }
   }, [])
 
@@ -42,7 +40,7 @@ function App() {
       <Content >
         <Outlet />
 
-        {path !== '/signup' && !isAuth && <AuthForm onFinish={onFinish} />}
+        {path == '/' && !isAuth && <AuthForm onFinish={onFinish} />}
       </Content>
 
       <Footer />
