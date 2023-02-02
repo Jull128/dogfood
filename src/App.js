@@ -19,6 +19,7 @@ function App() {
     const token = localStorage.getItem('token')
     if (token) {
       setIsAuth(true)
+      navigate('products')
     }
   }, [])
 

@@ -35,7 +35,7 @@ export function User() {
         <div className={style.avatar}><img alt="" src={user.avatar} /></div>
         <div>
           <p>
-            Фамилия Имя :
+            Имя Фамилия :
             {' '}
             <span>{user.name}</span>
           </p>
