@@ -15,8 +15,6 @@ export function ProductPage() {
             const responce = await res.json()
 
             setProducts(responce)
-
-            console.log(responce);
         }
 
 

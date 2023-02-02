@@ -14,8 +14,6 @@ export function User() {
       const responce = await res.json()
 
       setUser(responce)
-
-      console.log(responce);
     }
 
 
