@@ -31,7 +31,7 @@ export function User() {
     <div className={style.container}>
       <h2>Личный кабинет</h2>
       <div className={style.block}>
-        <div className={style.avatar}><img alt="" /></div>
+        <div className={style.avatar}><img alt="" src={user.avatar} /></div>
         <div>
           <p>
             Фамилия Имя :
