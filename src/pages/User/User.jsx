@@ -11,6 +11,7 @@ export function User() {
   function submit() {
     localStorage.clear()
     navigate('/')
+    window.location.reload()
   }
 
   useEffect(() => {
