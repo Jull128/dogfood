@@ -1,0 +1,55 @@
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px;
+    flex-direction: column;
+    position: relative;
+    background-color: white;
+    border-radius: 20px;
+    height: 100%;
+
+}
+
+.discount {
+    position: absolute;
+    max-width: 58px;
+    text-align: center;
+    padding: 2px 8px;
+    background-color: var(--sale-color);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: red;
+    border-radius: 20px;
+}
+
+.description {
+    width: 100%;
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.picture img {
+    height: 100%;
+    max-width: 80%;
+    margin: auto;
+}
+
+.picture {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    background-color: rgb(250, 228, 105);
+    border-radius: 55px;
+    border-style: none;
+}
