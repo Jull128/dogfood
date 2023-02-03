@@ -5,7 +5,6 @@ import style from './style.module.css'
 
 export function InfoUser({ user }) {
 
-
     return (
         <div className={style.container}>
             <div><h2>Личный кабинет</h2></div>
