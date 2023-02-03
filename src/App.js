@@ -6,7 +6,6 @@ import { Layout } from 'antd';
 import { Content } from 'antd/es/layout/layout';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
-import { UserContext } from './context/Context';
 
 
 
@@ -16,14 +15,15 @@ function App() {
 
   const [isAuth, setIsAuth] = useState(false);
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token')
-  //   if (token) {
-  //     setIsAuth(true)
-  //     navigate('products')
-  //   }
-  // }, [navigate])
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      setIsAuth(true)
+      navigate('products')
+    }
+  }, [])
 
+  const path = window.location.pathname
 
   const onFinish = async (values) => {
     const res = await api.auth(values);
@@ -41,7 +41,7 @@ function App() {
       <Content >
         <Outlet />
 
-        {!isAuth && <AuthForm onFinish={onFinish} />}
+        {path == '/' && !isAuth && <AuthForm onFinish={onFinish} />}
       </Content>
 
       <Footer />

@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { User } from './pages/User/User';
 import { UserContextProvider } from './context/Context';
 
+
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
@@ -28,7 +29,6 @@ const router = createBrowserRouter([
         path: '/users/me',
         element: <User />
       },
-
     ]
   },
 ])
@@ -38,7 +38,7 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient} >
       <UserContextProvider >
-      <RouterProvider router={router} />
+        <RouterProvider router={router} />
       </UserContextProvider>
     </QueryClientProvider>
   </React.StrictMode>

@@ -9,9 +9,6 @@ export function Header() {
                 <NavLink className={style.link} to='products'>Продукты</NavLink>
             </li>
             <li>
-                <NavLink className={style.link} to='users'>Пользователи</NavLink>
-            </li>
-            <li>
                 <NavLink className={style.link} to='signup'>Регистрация</NavLink>
             </li>
             <li>

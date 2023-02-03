@@ -12,6 +12,7 @@ export function RegForm() {
         email: '',
         group: '9-gr',
         password: '',
+        avatar: ''
     }
 
     const { mutateAsync, isLoading, isError, error } = useMutation({
@@ -20,7 +21,7 @@ export function RegForm() {
 
     const submitHandler = async (values) => {
         await mutateAsync(values)
-        navigate('/products')
+        navigate('/')
     }
 
     return (
@@ -30,14 +31,17 @@ export function RegForm() {
         >
             <Form className={style.form}>
 
-                <Field name="email" type="email" placeholder="email here" className={style.field} />
+                <Field name="email" type="email" placeholder="email" className={style.field} />
                 <ErrorMessage component="p" name="email" className={style.error} />
 
                 <Field name="group" type="text" placeholder="9-gr" className={style.field} />
                 <ErrorMessage component="p" name="group" className={style.error} />
 
-                <Field name="password" type="password" placeholder="password here" className={style.field} />
+                <Field name="password" type="password" placeholder="password" className={style.field} />
                 <ErrorMessage component="p" name="password" className={style.error} />
+
+                <Field name="avatar" type="text" placeholder="URL adress" className={style.field} />
+                <ErrorMessage component="p" name="avatar" className={style.error} />
 
                 <button disabled={isLoading} type="submit" className={style.button}  >Sign Up</button>
                 {isError && (
