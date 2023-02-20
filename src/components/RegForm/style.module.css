@@ -1,9 +1,10 @@
 .form {
     display: flex;
     flex-direction: column;
+    height: 100%;
     width: 50%;
     justify-content: center;
-    margin: 100px auto 40px;
+    margin: 0px auto 0px;
 }
 
 .field {

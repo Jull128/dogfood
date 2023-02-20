@@ -1,39 +1,46 @@
-import { Input, Form, Button } from 'antd';
+import { api } from '../../api/api';
 import { Link } from 'react-router-dom';
-import style from './style.module.css'
+import style from './style.module.css';
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { useNavigate } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query'
 
-export function AuthForm({ onFinish }) {
-    return <Form
-        className={style.form}
-        name="basic"
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
 
-        autoComplete="off"
-    >
-        <Form.Item
-            label="Username"
-            name="email"
-            rules={[{ required: true, message: 'Please input your username!' }]}
+export function AuthForm() {
+    const navigate = useNavigate()
+
+    const initialValues = {
+        email: '',
+        password: '',
+    }
+
+    const { mutateAsync, isLoading, isError, error } = useMutation({
+        mutationFn: (values) => api.auth(values).then(data => {
+            localStorage.setItem("token", data.token)
+        })
+    })
+
+    const submitHandler = async (values) => {
+        await mutateAsync(values)
+        navigate('/products')
+    }
+
+    return (
+        <Formik
+            initialValues={initialValues}
+            onSubmit={submitHandler}
         >
-            <Input />
-        </Form.Item>
+            <Form className={style.form}>
+                <Field className={style.field} name="password" placeholder="password here" type="password" />
+                <ErrorMessage component="p" className={style.error} name="password" />
 
-        <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-            <Input.Password />
-        </Form.Item>
+                <Field className={style.field} name="email" placeholder="email here" type="email" />
+                <ErrorMessage component="p" className={style.error} name="email" />
 
-
-        <Form.Item className={style.field} wrapperCol={{ offset: 8, span: 16 }}>
-            <Button className={style.button} type="primary" htmlType="submit" >
-                Submit
-            </Button>
-            Or <Link to="/signup">Sign up</Link>
-        </Form.Item>
-
-    </Form>
+                <button disabled={isLoading} type="submit" className={style.button} >Войти</button>
+                Or <Link to="/signup">Sign up</Link>
+            </Form>
+        </Formik>
+    )
 }
+

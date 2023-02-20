@@ -28,8 +28,8 @@ class Api {
 
 
     // авторизация
-    auth(values) {
-        return fetch(`${this.url}/signin`, {
+    async auth(values) {
+        const res = await fetch(`${this.url}/signin`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -37,6 +37,7 @@ class Api {
             },
             body: JSON.stringify(values)
         })
+        return res.json()
     }
 
     allUsers(token) {

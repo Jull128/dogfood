@@ -1,11 +1,11 @@
-import { useNavigate, Navigate, Outlet, Link } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
-import { api } from './api/api';
+import { useNavigate, Outlet } from 'react-router-dom';
+import style from './style.module.css';
 import { AuthForm } from './components/AuthForm/AuthForm';
 import { Layout } from 'antd';
 import { Content } from 'antd/es/layout/layout';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
+import { useEffect, useState } from 'react';
 
 
 
@@ -25,23 +25,23 @@ function App() {
 
   const path = window.location.pathname
 
-  const onFinish = async (values) => {
-    const res = await api.auth(values);
-    const responce = await res.json();
+  // const onFinish = async () => {
+  //   // const res = await api.auth(values);
+  //   // const responce = await res.json();
 
-    setIsAuth(true)
-    localStorage.setItem('token', responce.token)
-    navigate('products')
-  }
+  //   setIsAuth(true)
+  //   localStorage.setItem('token', responce.token)
+  //   navigate('products')
+  // }
 
   return (
-    <Layout>
+    <Layout className={style.layout}>
       <Header />
 
       <Content >
         <Outlet />
 
-        {path == '/' && !isAuth && <AuthForm onFinish={onFinish} />}
+        {path === '/' && !isAuth && <AuthForm />}
       </Content>
 
       <Footer />
