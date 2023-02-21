@@ -13,7 +13,6 @@
 }
 
 .discount {
-    position: absolute;
     max-width: 58px;
     text-align: center;
     padding: 2px 8px;
@@ -31,6 +30,18 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.description p {
+    margin: 10px 0 10px 0;
+    height: 50px;
+}
+
+.normal__price {
+    margin: 0;
+    height: 28px;
+    display: flex;
+    align-items: end;
+    font-weight: 600;
+}
 
 .picture img {
     height: 100%;
@@ -43,6 +54,7 @@
     width: 100%;
     margin-top: 20px;
     height: 150px;
+    margin-bottom: 10px;
 }
 
 .btn {
@@ -61,4 +73,23 @@
     font-size: 18px;
     background-color: rgb(250, 228, 105);
     box-shadow: 4px 4px 2px rgb(189, 165, 33);
+}
+
+.old__price {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 14px;
+    text-decoration: line-through;
+    display: block;
+    height: 14px;
+    margin: 0;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 14px;
+    display: block;
+    height: 14px;
+    margin: 0;
 }

@@ -8,9 +8,9 @@ export function Header() {
             <li>
                 <NavLink className={style.link} to='products'>Продукты</NavLink>
             </li>
-            <li>
+            {/* <li>
                 <NavLink className={style.link} to='signup'>Регистрация</NavLink>
-            </li>
+            </li> */}
             <li>
                 <NavLink className={style.link} to='users/me'>Аккаунт</NavLink>
             </li>

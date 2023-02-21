@@ -2,8 +2,10 @@ import style from './style.module.css'
 
 export function Catalog({ products }) {
 
+
     return (
         products.products.map(product => {
+            const discount_price = Math.round(product.price - product.price * product.discount / 100);
             return (
                 <div className={style.card}>
                     <div className={style.picture}>
@@ -14,15 +16,16 @@ export function Catalog({ products }) {
                     <div className={style.description}>
 
                         {product.discount ? (
-                            <div className={style.discount}>
-                                -
-                                {product.discount}
-                                %
+                            <div >
+                                <span className={style.discount}>{discount_price}</span>
+                                <h3 className={style.old__price}>{product.price} ₽</h3>
                             </div>
+
                         ) : (
-                            ''
+                            <div >
+                                <h3 className={style.normal__price}>{product.price} ₽</h3>
+                            </div>
                         )}
-                        <h3>{product.price} ₽</h3>
                         <p>{product.name}</p>
                         <button className={style.btn}>В корзину</button>
                     </div>
@@ -32,25 +35,3 @@ export function Catalog({ products }) {
     )
 }
 
-
-
-{/* // <Space direction='horizontal' align='center' wrap>
-        //     {products.products.map(product => {
-        //         return <Card
-        //             className={style.card}
-        //             cover={
-        //                 <img
-        //                     alt={product.name}
-        //                     src={product.pictures}
-        //                 />
-        //             }>
-        //             <Meta
-        //                 className={style.description}
-        //                 title={product.name}
-        //                 description={product.description}
-        //             />
-        //         </Card>
-        //     })}
-        // </Space> */}
-    // )
-    //                 }

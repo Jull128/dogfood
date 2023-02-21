@@ -33,26 +33,22 @@ export function User() {
       <h2>Личный кабинет</h2>
       <div className={style.block}>
         <div className={style.avatar}><img alt="" src={user.avatar} /></div>
-        <div>
+        <div className={style.description}>
           <p>
             Имя Фамилия :
-            {' '}
-            <span>{user.name}</span>
+            <span> {user.name}</span>
           </p>
           <p>
-            Тип :
-            {' '}
-            <span>{user.about}</span>
+            Ник :
+            <span> {user.about}</span>
           </p>
           <p>
-            группа :
-            {' '}
-            <span>{user.group}</span>
+            Группа :
+            <span> {user.group}</span>
           </p>
           <p>
-            email :
-            {' '}
-            <span>{user.email}</span>
+            E-mail :
+            <span> {user.email}</span>
           </p>
         </div>
 
