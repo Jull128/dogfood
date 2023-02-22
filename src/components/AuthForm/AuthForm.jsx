@@ -30,12 +30,12 @@ export function AuthForm() {
             initialValues={initialValues}
             onSubmit={submitHandler}
         >
-            <Form className={style.form}>
-                <Field className={style.field} name="password" placeholder="password here" type="password" />
-                <ErrorMessage component="p" className={style.error} name="password" />
-
+            <Form className={style.form}>\
                 <Field className={style.field} name="email" placeholder="email here" type="email" />
                 <ErrorMessage component="p" className={style.error} name="email" />
+
+                <Field className={style.field} name="password" placeholder="password here" type="password" />
+                <ErrorMessage component="p" className={style.error} name="password" />
 
                 <button disabled={isLoading} type="submit" className={style.button} >Войти</button>
                 Or <Link to="/signup">Sign up</Link>

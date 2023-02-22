@@ -5,14 +5,8 @@ import style from './style.module.css'
 
 
 export function User() {
-  const navigate = useNavigate()
-  const [user, setUser] = useState([])
 
-  function submit() {
-    localStorage.clear()
-    navigate('/')
-    window.location.reload()
-  }
+  const [user, setUser] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,7 +47,7 @@ export function User() {
         </div>
 
       </div>
-      <button className={style.button} type="button" onClick={() => submit()}>Выйти</button>
+
     </div>
   )
 }
