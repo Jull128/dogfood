@@ -1,3 +1,6 @@
+@import "@font/nunito";
+
+
 .card {
     display: flex;
     justify-content: space-between;
@@ -10,15 +13,16 @@
     height: 100%;
     cursor: pointer;
     transition: all 0.5s ease;
+    font-family: var(--fontFamily-nunito);
 }
 
 .discount {
     max-width: 58px;
     text-align: center;
-    padding: 2px 8px;
+    padding: 2px 0px;
     background-color: var(--sale-color);
-    font-weight: 600;
-    font-size: 16px;
+    font-weight: 700;
+    font-size: 18px;
     line-height: 20px;
     color: red;
     border-radius: 20px;
@@ -27,7 +31,6 @@
 .description {
     width: 100%;
     text-align: left;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .description p {
@@ -41,6 +44,7 @@
     display: flex;
     align-items: end;
     font-weight: 600;
+    font-size: 18px;
 }
 
 .picture img {
@@ -54,7 +58,7 @@
     width: 100%;
     margin-top: 20px;
     height: 150px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .btn {
@@ -76,8 +80,8 @@
 }
 
 .old__price {
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 300;
     line-height: 14px;
     text-decoration: line-through;
     display: block;
@@ -86,7 +90,7 @@
 }
 
 .price {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     line-height: 14px;
     display: block;

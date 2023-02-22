@@ -17,8 +17,8 @@ export function Catalog({ products }) {
 
                         {product.discount ? (
                             <div >
-                                <span className={style.discount}>{discount_price}</span>
                                 <h3 className={style.old__price}>{product.price} ₽</h3>
+                                <span className={style.discount}>{discount_price} ₽</span>
                             </div>
 
                         ) : (
