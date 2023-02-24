@@ -2,7 +2,7 @@ import style from './style.module.css'
 
 export function Catalog({ products }) {
 
-    return (products?.products.map(product => {
+    return (products.products.map(product => {
         const discount_price = Math.round(product.price - product.price * product.discount / 100);
         return (
             <div key={product._id} className={style.card}>
