@@ -15,13 +15,13 @@ function App() {
 
   const [isAuth, setIsAuth] = useState(false);
 
-  useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      setIsAuth(true)
-      navigate('products')
-    }
-  }, [])
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token')
+  //   if (token) {
+  //     setIsAuth(true)
+  //     navigate('products')
+  //   }
+  // }, [])
 
   const path = window.location.pathname
 

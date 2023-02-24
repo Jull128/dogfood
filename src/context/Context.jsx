@@ -6,9 +6,11 @@ export function UserContextProvider({ children }) {
 
     const [user, setUser] = useState();
 
+
     const userData = {
         user,
         setUser,
+
     }
 
     return (

@@ -8,6 +8,8 @@ import { RegForm } from './components/RegForm/RegForm';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { User } from './pages/User/User';
 import { UserContextProvider } from './context/Context';
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
 
 
 const queryClient = new QueryClient()
@@ -37,9 +39,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient} >
-      <UserContextProvider >
-        <RouterProvider router={router} />
-      </UserContextProvider>
+      <Provider store={store}>
+        <UserContextProvider >
+          <RouterProvider router={router} />
+        </UserContextProvider>
+      </Provider>
     </QueryClientProvider>
   </React.StrictMode>
 );
