@@ -1,14 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../api/api";
 import { Catalog } from "../../components/Catalog/Catalog";
-import { Search } from "../../components/search/Search";
 import { getSearchSelector } from "../../redux/slices/filterSlice";
 import { getTokenSelector } from "../../redux/slices/tokenSlice";
 import style from './style.module.css'
-import { getQueryKey, getQuerySearchKey } from "./util";
+import { getQueryKey } from "./util";
 
 
 export function ProductPage() {
@@ -32,8 +31,8 @@ export function ProductPage() {
     })
 
     return (
-        <div className={style.products}>
-            <Catalog products={products} />
+        <div className={products?.total !== 0 && style.products}>
+            <Catalog search={search} products={products} />
         </div>
     )
 }

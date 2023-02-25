@@ -1,6 +1,14 @@
 import style from './style.module.css'
 
-export function Catalog({ products }) {
+export function Catalog({ search, products }) {
+
+    if (products?.total === 0) {
+        return (
+            <div className={style.notfound}>
+                По запросу '{search}' ничего не найдено
+            </div>
+        )
+    }
 
     return (products?.products.map(product => {
         const discount_price = Math.round(product.price - product.price * product.discount / 100);
@@ -29,7 +37,8 @@ export function Catalog({ products }) {
                 </div>
             </div>
         )
-    })
+    }
+    )
     )
 }
 

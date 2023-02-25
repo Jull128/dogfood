@@ -21,7 +21,7 @@
     line-height: 28px;
     padding: 4px;
     border-radius: 32px;
-    font-size: 24px;
+    font-size: 18px;
     border: none;
     width: 50%;
     height: 50px;
@@ -37,11 +37,11 @@
     text-decoration: none;
     transition: all 0.5s ease;
     color: black;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
 }
 
 .link:hover {
-    color: rgb(65, 24, 187);
+    color: white;
     font-size: 20px;
 }
