@@ -1,0 +1,10 @@
+.searchInput {
+    line-height: 20px;
+    text-align: center;
+    padding: 4px;
+    border-radius: 24px;
+    font-size: 20px;
+    margin: 8px 0;
+    width: 99%;
+    border-color: white;
+}

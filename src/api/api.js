@@ -63,7 +63,7 @@ class Api {
 
     }
 
-    async getProducts(token) {
+    async getProducts(search, token) {
         const res = await fetch(`${this.url}/products`, {
             method: 'GET',
             headers: {

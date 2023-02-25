@@ -4,14 +4,18 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../api/api";
 import { Catalog } from "../../components/Catalog/Catalog";
+import { Search } from "../../components/search/Search";
+import { getSearchSelector } from "../../redux/slices/filterSlice";
 import { getTokenSelector } from "../../redux/slices/tokenSlice";
 import style from './style.module.css'
+import { getQueryKey, getQuerySearchKey } from "./util";
 
 
 export function ProductPage() {
     // const [products, setProducts] = useState({ total: 0, products: [] })
     const navigate = useNavigate()
     const token = useSelector(getTokenSelector)
+    const search = useSelector(getSearchSelector)
 
     useEffect(() => {
         if (!token) {
@@ -22,8 +26,8 @@ export function ProductPage() {
     const {
         data: products,
     } = useQuery({
-        // queryKey: 'allProducts',
-        queryFn: () => api.getProducts(token),
+        queryKey: getQueryKey(search),
+        queryFn: () => api.getProducts(search, token),
         enabled: !!(token),
     })
 
@@ -42,9 +46,10 @@ export function ProductPage() {
     // }, [])
 
     return (
-        <div className={style.products}>
-            {/* {Search} */}
-            <Catalog products={products} />
-        </div>
+        <>
+            <div className={style.products}>
+                <Catalog products={products} />
+            </div>
+        </>
     )
 }

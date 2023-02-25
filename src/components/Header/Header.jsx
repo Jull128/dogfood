@@ -1,7 +1,8 @@
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { clearToken, getTokenSelector } from '../../redux/slices/tokenSlice';
+import { Search } from '../search/Search';
 import style from './style.module.css'
 
 export function Header() {
@@ -25,9 +26,9 @@ export function Header() {
             <li>
                 <NavLink className={style.link} to='products'>Продукты</NavLink>
             </li>
-            {/* <li>
-                <NavLink className={style.link} to='signup'>Регистрация</NavLink>
-            </li> */}
+            {token && <li className={style.search} >
+                <Search />
+            </li>}
             <li>
                 <NavLink className={style.link} to='users/me'>Аккаунт</NavLink>
             </li>

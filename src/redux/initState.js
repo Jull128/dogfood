@@ -9,9 +9,9 @@ export const initState = {
         token: '',
     },
 
-    // filter: {
-    //     search: '',
-    // }
+    filter: {
+        search: '',
+    }
 }
 
 export const getInitState = () => {

@@ -13,8 +13,24 @@
     height: 70px;
 }
 
-.header li:nth-child(2) {
+.header li:nth-child(3) {
     margin-left: auto;
+}
+
+.search {
+    line-height: 28px;
+    padding: 4px;
+    border-radius: 32px;
+    font-size: 24px;
+    border: none;
+    width: 50%;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-left: 100px;
 }
 
 .link {
