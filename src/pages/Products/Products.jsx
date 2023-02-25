@@ -12,7 +12,7 @@ import { getQueryKey, getQuerySearchKey } from "./util";
 
 
 export function ProductPage() {
-    // const [products, setProducts] = useState({ total: 0, products: [] })
+
     const navigate = useNavigate()
     const token = useSelector(getTokenSelector)
     const search = useSelector(getSearchSelector)
@@ -31,25 +31,9 @@ export function ProductPage() {
         enabled: !!(token),
     })
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const token = localStorage.getItem('token');
-    //         // const res = await api.allUsers(token);
-    //         const res = await api.getProducts(token);
-    //         const responce = await res.json()
-
-    //         setProducts(responce)
-    //     }
-
-
-    //     fetchData()
-    // }, [])
-
     return (
-        <>
-            <div className={style.products}>
-                <Catalog products={products} />
-            </div>
-        </>
+        <div className={style.products}>
+            <Catalog products={products} />
+        </div>
     )
 }

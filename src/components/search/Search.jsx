@@ -18,7 +18,7 @@ export function Search() {
 
     useEffect(() => {
         dispatch(changeSearchFilter(debouncedSearchValue))
-    }, [dispatch, debouncedSearchValue])
+    }, [debouncedSearchValue, dispatch])
 
     return (
         <input
