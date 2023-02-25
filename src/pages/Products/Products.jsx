@@ -31,7 +31,7 @@ export function ProductPage() {
     })
 
     return (
-        <div className={products?.total !== 0 && style.products}>
+        <div className={(products?.total !== 0) && style.products}>
             <Catalog search={search} products={products} />
         </div>
     )
