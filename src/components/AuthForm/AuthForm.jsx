@@ -7,7 +7,6 @@ import { useMutation } from '@tanstack/react-query'
 import { useDispatch } from 'react-redux';
 import { setToken } from '../../redux/slices/tokenSlice';
 
-
 export function AuthForm() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -19,12 +18,15 @@ export function AuthForm() {
 
     const { mutateAsync, isLoading, isError, error } = useMutation({
         mutationFn: (values) => api.auth(values).then((user) => {
-            dispatch(setToken(user.token))
+            dispatch(setToken(user))
+
         })
     })
 
     const submitHandler = async (values) => {
-        await mutateAsync(values)
+        await mutateAsync(values);
+
+
         navigate('/products')
     }
 

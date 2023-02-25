@@ -4,10 +4,12 @@ import { initState } from "../initState";
 
 const tokenSlice = createSlice({
     name: 'token',
-    initialState: initState.user.token,
+    initialState: initState.user,
     reducers: {
         setToken(state, action) {
-            return action.payload;
+            state = action.payload.data;
+            state.token = action.payload.token;
+            return state;
         },
         clearToken() {
             return '';
@@ -17,4 +19,5 @@ const tokenSlice = createSlice({
 
 export const { setToken, clearToken } = tokenSlice.actions;
 export const tokenReducer = tokenSlice.reducer;
+export const getUserSelector = (state) => state.user;
 export const getTokenSelector = (state) => state.user.token

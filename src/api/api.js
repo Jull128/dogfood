@@ -51,8 +51,8 @@ class Api {
         })
     }
 
-    me(token) {
-        return fetch(`${this.url}/v2/${this.groupId}/users/me`, {
+    async me(token) {
+        const res = await fetch(`${this.url}/v2/${this.groupId}/users/me`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -60,6 +60,7 @@ class Api {
                 'Authorization': 'Bearer ' + token
             },
         })
+        return res.json()
 
     }
 

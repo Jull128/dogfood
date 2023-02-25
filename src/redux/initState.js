@@ -3,10 +3,12 @@ import { reduxState } from "./constants"
 
 export const initState = {
     user: {
+        token: '',
         group: '9-gr',
         name: '',
         email: '',
-        token: '',
+        avatar: '',
+        about: '',
     },
 
     filter: {

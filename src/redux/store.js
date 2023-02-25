@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { reduxState } from "./constants";
 import { getInitState } from "./initState";
-import { mainReducer } from "./reducer";
 import { filterReducer } from "./slices/filterSlice";
+import { tokenReducer } from "./slices/tokenSlice";
 
 
 
 export const store = configureStore({
     reducer: {
-        user: mainReducer,
+        user: tokenReducer,
         filter: filterReducer,
     },
     preloadedState: getInitState(),
