@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+import { ProductItem } from '../../pages/ProductItem/ProductItem';
 import style from './style.module.css'
 
 export function Catalog({ search, products }) {
@@ -11,31 +13,17 @@ export function Catalog({ search, products }) {
     }
 
     return (products?.products.map(product => {
-        const discount_price = Math.round(product.price - product.price * product.discount / 100);
+
         return (
-            <div key={product._id} className={style.card}>
-                <div className={style.picture}>
-                    <img
-                        alt={product.name}
-                        src={product.pictures} />
-                </div>
-                <div className={style.description}>
-
-                    {product.discount ? (
-                        <div >
-                            <h3 className={style.old__price}>{product.price} ₽</h3>
-                            <span className={style.discount}>{discount_price} ₽</span>
-                        </div>
-
-                    ) : (
-                        <div >
-                            <h3 className={style.normal__price}>{product.price} ₽</h3>
-                        </div>
-                    )}
-                    <p>{product.name}</p>
-                    <button className={style.btn}>В корзину</button>
-                </div>
-            </div>
+            <ProductItem
+                key={product._id}
+                id={product._id}
+                name={product.name}
+                price={product.price}
+                pictures={product.pictures}
+                wight={product.wight}
+                discount={product.discount}
+            />
         )
     }
     )

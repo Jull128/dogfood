@@ -76,6 +76,18 @@ class Api {
         return res.json()
     }
 
+    async getProductById(id, token) {
+        const res = await fetch(`${this.url}/products/${id}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token,
+            },
+        })
+        return res.json()
+    }
+
 }
 
 const api = new Api('9-gr');

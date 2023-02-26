@@ -9,7 +9,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { User } from './pages/User/User';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
-
+import { ProductDetail } from './components/ProductDetail/ProductDetail'
 
 const queryClient = new QueryClient()
 
@@ -25,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/products',
         element: <ProductPage />
+      },
+      {
+        path: '/products/:id',
+        element: <ProductDetail />
       },
       {
         path: '/users/me',

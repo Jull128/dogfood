@@ -3,7 +3,7 @@ import { initState } from "../initState";
 
 
 const tokenSlice = createSlice({
-    name: 'token',
+    name: 'user',
     initialState: initState.user,
     reducers: {
         setToken(state, action) {
