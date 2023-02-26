@@ -22,43 +22,46 @@ export function ProductDetail() {
 
     return (
         <div className={style.card} >
-            <div className={style.product}>
-                {product?.discount ? (
-
-                    <div className={style.discount__picture}>
-                        <span>{product?.discount} %</span>
-                        <img
-                            alt={product?.name}
-                            src={product?.pictures} />
-                    </div>
-
-                ) : (
-                    <div className={style.nondiscount__picture}>
-                        <img
-                            alt={product?.name}
-                            src={product?.pictures} />
-                    </div>
-                )}
-                <div>
+            <div className={style.container} >
+                <div className={style.product}>
                     {product?.discount ? (
-                        <div >
-                            <h3 className={style.old__price}>{product?.price} ₽</h3>
-                            <span className={style.discount}>{discount_price} ₽</span>
+
+                        <div className={style.discount__picture}>
+                            <span>{product?.discount} %</span>
+                            <img
+                                alt={product?.name}
+                                src={product?.pictures} />
                         </div>
 
                     ) : (
-                        <div >
-                            <h3 className={style.normal__price}>{product?.price} ₽</h3>
+                        <div className={style.nondiscount__picture}>
+                            <img
+                                alt={product?.name}
+                                src={product?.pictures} />
                         </div>
                     )}
-                    <button className={style.btn}>В корзину</button>
+                    <div className={style.about}>
+                        {product?.discount ? (
+                            <div>
+                                <span className={style.old__price}>{product?.price} ₽</span>
+                                <span className={style.discount}>{discount_price} ₽</span>
+                                <span className={style.wight}>{product?.wight}</span>
+                            </div>
+
+                        ) : (
+                            <div >
+                                <h3 className={style.normal__price}>{product?.price} ₽</h3>
+                            </div>
+                        )}
+                        <button className={style.btn}>В корзину</button>
+                    </div>
+
                 </div>
+                <div className={style.description}>
+                    <span>Описание</span>
+                    <p>{product?.name}</p>
 
-            </div>
-            <div className={style.description}>
-
-                <p>{product?.name}</p>
-
+                </div>
             </div>
         </div>
     )

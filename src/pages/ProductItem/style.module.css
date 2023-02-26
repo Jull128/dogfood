@@ -1,6 +1,3 @@
-@import "@font/nunito";
-
-
 .card {
     display: flex;
     justify-content: space-between;
@@ -13,7 +10,7 @@
     height: 100%;
     cursor: pointer;
     transition: all 0.5s ease;
-    font-family: var(--fontFamily-nunito);
+    font-family: sans-serif;
 }
 
 .discount {
@@ -24,7 +21,7 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 20px;
-    color: red;
+    color: #F44336;
     border-radius: 20px;
 }
 
