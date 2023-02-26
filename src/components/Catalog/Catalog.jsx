@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { ProductItem } from '../../pages/ProductItem/ProductItem';
 import style from './style.module.css'
 

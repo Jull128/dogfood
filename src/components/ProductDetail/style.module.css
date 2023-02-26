@@ -5,10 +5,9 @@
     flex-direction: column;
     position: relative;
     background-color: white;
-    border-radius: 20px;
     max-width: 100%;
     margin: 0;
-    height: calc(100vh - 220px);
+    min-height: calc(100vh - 220px);
     font-family: 'Montserrat', sans-serif;
 }
 

@@ -50,8 +50,9 @@
     width: 100vh;
     height: calc(100vh - 260px);
     margin: 20px auto;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 32px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .picture img {

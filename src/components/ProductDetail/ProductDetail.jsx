@@ -50,7 +50,7 @@ export function ProductDetail() {
 
                         ) : (
                             <div >
-                                <h3 className={style.normal__price}>{product?.price} ₽</h3>
+                                <span className={style.normal__price}>{product?.price} ₽</span>
                             </div>
                         )}
                         <button className={style.btn}>В корзину</button>
@@ -60,7 +60,7 @@ export function ProductDetail() {
                 <div className={style.description}>
                     <span>Описание</span>
                     <p>{product?.name}</p>
-
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam laborum nulla, omnis totam adipisci nesciunt aliquam, eius, sed labore esse! Sit consequatur non libero hic. Blanditiis odit sapiente fugiat?</p>
                 </div>
             </div>
         </div>

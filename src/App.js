@@ -17,12 +17,10 @@ function App() {
   return (
     <Layout className={style.layout}>
       <Header />
-
       <Content >
         <Outlet />
         {path === '/' && !isAuth && <AuthForm />}
       </Content>
-
       <Footer />
     </Layout>
   );
