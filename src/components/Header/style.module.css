@@ -7,8 +7,8 @@
     width: 100%;
     list-style: none;
     background-color: rgb(250, 228, 105);
-    gap: 20px;
-    padding: 15px 40px;
+    gap: 30px;
+    padding: 15px 10%;
     margin: 0;
     height: 70px;
 }
@@ -39,6 +39,14 @@
     color: black;
     font-size: 18px;
     font-weight: 500;
+    height: 100%;
+}
+
+.link__logo {
+    height: 30px;
+    width: 30px;
+    transition: all 0.5s ease;
+
 }
 
 .link:hover {

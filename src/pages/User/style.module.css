@@ -4,6 +4,10 @@
     margin-bottom: 2rem;
     margin-left: auto;
     margin-right: auto;
+    height: calc(100vh - 280px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .container h2 {
