@@ -80,8 +80,7 @@
 }
 
 
-.delivery h3,
-p {
+.delivery p {
     display: flex;
     align-items: start;
     margin: 0 0 10px 10px;
@@ -89,6 +88,13 @@ p {
     line-height: 20px;
 }
 
+.delivery h3 {
+    display: flex;
+    align-items: start;
+    margin: 0 0 10px 10px;
+    text-align: left;
+    line-height: 20px;
+}
 
 .description {
     width: 100%;
@@ -199,8 +205,15 @@ p {
 }
 
 
-.warranty h3,
-p {
+.warranty h3 {
+    display: flex;
+    align-items: start;
+    margin: 0 0 10px 10px;
+    text-align: left;
+    line-height: 20px;
+}
+
+.warranty p {
     display: flex;
     align-items: start;
     margin: 0 0 10px 10px;
