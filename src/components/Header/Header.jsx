@@ -21,9 +21,9 @@ export function Header() {
             <li>
                 <NavLink to='products'><img className={style.link__logo} src={catalog} /></NavLink>
             </li>
-            {token && <li className={style.search} >
+            <li className={style.search} >
                 <Search />
-            </li>}
+            </li>
             <li>
                 <NavLink to='users/me'><img className={style.link__logo} src={dog} /></NavLink>
             </li>
