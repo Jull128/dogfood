@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { api } from "../../api/api";
 import { getTokenSelector } from "../../redux/slices/tokenSlice";
 import style from './style.module.css'
+import delivery from './delivery.svg'
+import warranty from './warranty.svg'
 
 
 export function ProductDetail() {
@@ -29,6 +31,7 @@ export function ProductDetail() {
                         <div className={style.discount__picture}>
                             <span>{product?.discount} %</span>
                             <img
+                                className={style.product__picture}
                                 alt={product?.name}
                                 src={product?.pictures} />
                         </div>
@@ -53,7 +56,27 @@ export function ProductDetail() {
                                 <span className={style.normal__price}>{product?.price} ₽</span>
                             </div>
                         )}
+                        {/* add count */}
                         <button className={style.btn}>В корзину</button>
+
+                        <div className={style.delivery}>
+                            <img src={delivery} />
+                            <div>
+                                <h3>Доставка по всему Миру!</h3>
+
+                                <p>Доставка курьером — от 399 ₽<br />
+
+                                    Доставка в пункт выдачи — от 199 ₽</p>
+                            </div>
+                        </div>
+
+                        <div className={style.warranty}>
+                            <img src={warranty} />
+                            <div>
+                                <h3>Гарантия качества</h3>
+                                <p>Если Вам не понравилось качество нашей продукции, мы вернем деньги, либо сделаем все возможное, чтобы удовлетворить ваши нужды.</p>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

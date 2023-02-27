@@ -61,9 +61,39 @@
     line-height: 24px;
 }
 
+.delivery {
+    display: flex;
+    height: 100px;
+    width: 80%;
+    background-color: rgba(211, 211, 211, 0.581);
+    margin-top: 20px;
+    border-radius: 25px;
+    padding: 15px;
+    font-size: 12px;
+}
+
+.delivery img {
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+
+.delivery h3,
+p {
+    display: flex;
+    align-items: start;
+    margin: 0 0 10px 10px;
+    text-align: left;
+    line-height: 20px;
+}
+
+
 .description {
     width: 100%;
     text-align: left;
+    padding: 20px 0 20px 0;
 }
 
 .description span {
@@ -94,8 +124,8 @@
     font-size: 32px;
 }
 
-.product img {
-    height: 100%;
+.product__picture {
+    height: 400px;
     width: 100%;
     margin: auto;
 }
@@ -105,7 +135,7 @@
     justify-content: space-between;
     text-align: center;
     width: 100%;
-    height: 400px;
+    height: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -149,6 +179,33 @@
     display: block;
     height: 14px;
     margin: 0;
+}
+
+.warranty {
+    display: flex;
+    height: 150px;
+    width: 80%;
+    background-color: rgba(211, 211, 211, 0.581);
+    margin-top: 20px;
+    border-radius: 25px;
+    padding: 15px;
+    font-size: 12px;
+}
+
+
+.warranty img {
+    height: 30px;
+    width: 30px;
+}
+
+
+.warranty h3,
+p {
+    display: flex;
+    align-items: start;
+    margin: 0 0 10px 10px;
+    text-align: left;
+    line-height: 20px;
 }
 
 .wight {
