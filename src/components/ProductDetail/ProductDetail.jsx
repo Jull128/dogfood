@@ -20,7 +20,6 @@ export function ProductDetail() {
         enabled: !!(token),
     })
     const discount_price = Math.round(product?.price - product?.price * product?.discount / 100);
-    console.log(product.tags);
 
     return (
         <div className={style.card} >
