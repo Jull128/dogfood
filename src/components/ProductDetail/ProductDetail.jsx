@@ -20,7 +20,7 @@ export function ProductDetail() {
         enabled: !!(token),
     })
     const discount_price = Math.round(product?.price - product?.price * product?.discount / 100);
-    console.log(product);
+    console.log(product.tags);
 
     return (
         <div className={style.card} >
@@ -29,7 +29,11 @@ export function ProductDetail() {
                     {product?.discount ? (
 
                         <div className={style.discount__picture}>
-                            <span>{product?.discount} %</span>
+                            <div className={style.tags}>
+                                <span>{product?.discount} %</span>
+                                {/* <span>{product?.tags[0]}</span>
+                                <span>{product?.tags[1]}</span> */}
+                            </div>
                             <img
                                 className={style.product__picture}
                                 alt={product?.name}
