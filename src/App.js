@@ -26,6 +26,7 @@ function App() {
       <Header />
       <Content >
         <Outlet />
+        {!token && <AuthForm />}
       </Content>
       <Footer />
     </Layout>

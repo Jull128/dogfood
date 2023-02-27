@@ -19,14 +19,11 @@ export function AuthForm() {
     const { mutateAsync, isLoading, isError, error } = useMutation({
         mutationFn: (values) => api.auth(values).then((user) => {
             dispatch(setToken(user))
-
         })
     })
 
     const submitHandler = async (values) => {
         await mutateAsync(values);
-
-
         navigate('/products')
     }
 
