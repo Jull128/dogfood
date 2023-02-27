@@ -1,25 +1,32 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import style from './style.module.css';
 import { AuthForm } from './components/AuthForm/AuthForm';
 import { Layout } from 'antd';
 import { Content } from 'antd/es/layout/layout';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getTokenSelector } from './redux/slices/tokenSlice';
 
 
 
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  const navigate = useNavigate()
+  const token = useSelector(getTokenSelector)
 
-  const path = window.location.pathname
+  useEffect(() => {
+    if (!token) {
+      navigate('/');
+    }
+    else navigate('/products')
+  }, [token]);
 
   return (
     <Layout className={style.layout}>
       <Header />
       <Content >
         <Outlet />
-        {path === '/' && !isAuth && <AuthForm />}
       </Content>
       <Footer />
     </Layout>
