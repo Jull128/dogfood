@@ -19,7 +19,6 @@ function App() {
     if (!token) {
       navigate('/');
     }
-    else navigate('/products')
   }, [token]);
 
   return (
