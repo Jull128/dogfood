@@ -4,6 +4,10 @@
     margin-bottom: 2rem;
     margin-left: auto;
     margin-right: auto;
+    min-height: calc(100vh - 220px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .container h2 {
@@ -30,30 +34,18 @@
     margin: 5rem;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.description {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
 }
 
 span {
     font-size: 20px;
     font-weight: 600;
-}
-
-.button {
-    margin: 0px;
-    width: 15%;
-    height: 100%;
-    border-radius: 32px;
-    font-size: 20px;
-    cursor: pointer;
-    line-height: 32px;
-    background-color: rgb(250, 228, 105);
-    font-weight: 600;
-    border: none;
-    color: black;
-    transition: all 0.5s ease;
-}
-
-.button:hover:not([disabled]) {
-    font-size: 24px;
-    background-color: rgb(250, 228, 105);
-    box-shadow: 4px 4px 2px rgb(189, 165, 33);
 }

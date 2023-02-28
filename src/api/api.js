@@ -28,8 +28,8 @@ class Api {
 
 
     // авторизация
-    auth(values) {
-        return fetch(`${this.url}/signin`, {
+    async auth(values) {
+        const res = await fetch(`${this.url}/signin`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -37,6 +37,7 @@ class Api {
             },
             body: JSON.stringify(values)
         })
+        return res.json()
     }
 
     allUsers(token) {
@@ -50,8 +51,8 @@ class Api {
         })
     }
 
-    me(token) {
-        return fetch(`${this.url}/v2/${this.groupId}/users/me`, {
+    async me(token) {
+        const res = await fetch(`${this.url}/v2/${this.groupId}/users/me`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -59,11 +60,12 @@ class Api {
                 'Authorization': 'Bearer ' + token
             },
         })
+        return res.json()
 
     }
 
-    getProducts(token) {
-        return fetch(`${this.url}/products`, {
+    async getProducts(search, token) {
+        const res = await fetch(`${this.url}/products?query=${search}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -71,6 +73,19 @@ class Api {
                 'Authorization': 'Bearer ' + token,
             },
         })
+        return res.json()
+    }
+
+    async getProductById(id, token) {
+        const res = await fetch(`${this.url}/products/${id}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token,
+            },
+        })
+        return res.json()
     }
 
 }

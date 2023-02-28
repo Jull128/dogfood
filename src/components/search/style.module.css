@@ -1,0 +1,12 @@
+.searchInput {
+    line-height: 20px;
+    text-align: left;
+    padding: 4px;
+    border-radius: 24px;
+    font-size: 18px;
+    margin: 8px 10px;
+    width: 99%;
+    outline: none;
+    border: 0;
+    font-family: 'Montserrat', sans-serif;
+}

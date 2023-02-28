@@ -1,5 +1,5 @@
 // import { Input, Form, Button } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query'
 import { api } from '../../api/api';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
@@ -44,6 +44,7 @@ export function RegForm() {
                 <ErrorMessage component="p" name="avatar" className={style.error} />
 
                 <button disabled={isLoading} type="submit" className={style.button}  >Sign Up</button>
+                Registred? <Link to="/">Sign in</Link>
                 {isError && (
                     <p >
                         {error.message}

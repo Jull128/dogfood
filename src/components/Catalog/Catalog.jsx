@@ -1,56 +1,31 @@
+import { ProductItem } from '../../pages/ProductItem/ProductItem';
 import style from './style.module.css'
 
-export function Catalog({ products }) {
+export function Catalog({ search, products }) {
 
-    return (
-        products.products.map(product => {
-            return (
-                <div className={style.card}>
-                    <div className={style.picture}>
-                        <img
-                            alt={product.name}
-                            src={product.pictures} />
-                    </div>
-                    <div className={style.description}>
+    if (products?.total === 0) {
+        return (
+            <div className={style.notfound}>
+                По запросу '{search}' ничего не найдено
+            </div>
+        )
+    }
 
-                        {product.discount ? (
-                            <div className={style.discount}>
-                                -
-                                {product.discount}
-                                %
-                            </div>
-                        ) : (
-                            ''
-                        )}
-                        <h3>{product.price} ₽</h3>
-                        <p>{product.name}</p>
-                        <button className={style.btn}>В корзину</button>
-                    </div>
-                </div>
-            )
-        })
+    return (products?.products.map(product => {
+
+        return (
+            <ProductItem
+                key={product._id}
+                id={product._id}
+                name={product.name}
+                price={product.price}
+                pictures={product.pictures}
+                wight={product.wight}
+                discount={product.discount}
+            />
+        )
+    }
+    )
     )
 }
 
-
-
-{/* // <Space direction='horizontal' align='center' wrap>
-        //     {products.products.map(product => {
-        //         return <Card
-        //             className={style.card}
-        //             cover={
-        //                 <img
-        //                     alt={product.name}
-        //                     src={product.pictures}
-        //                 />
-        //             }>
-        //             <Meta
-        //                 className={style.description}
-        //                 title={product.name}
-        //                 description={product.description}
-        //             />
-        //         </Card>
-        //     })}
-        // </Space> */}
-    // )
-    //                 }

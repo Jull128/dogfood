@@ -1,63 +1,58 @@
-import { useEffect, useState } from "react"
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../api/api";
+import { getUserSelector } from "../../redux/slices/tokenSlice";
 import style from './style.module.css'
 
 
 export function User() {
-  const navigate = useNavigate()
-  const [user, setUser] = useState([])
 
-  function submit() {
-    localStorage.clear()
-    navigate('/')
-    window.location.reload()
-  }
+  const navigate = useNavigate()
+  const token = useSelector(getUserSelector)
 
   useEffect(() => {
-    const fetchData = async () => {
-      const token = localStorage.getItem('token');
-
-      const res = await api.me(token);
-      const responce = await res.json()
-
-      setUser(responce)
+    if (!token) {
+      navigate('/');
     }
+  }, [token]);
 
-    fetchData()
-  }, [])
+  const {
+    data: user,
+  } = useQuery({
+    queryKey: ['user'],
+    queryFn: () => api.me(token),
+    enabled: !!(token),
+  })
 
 
   return (
     <div className={style.container}>
       <h2>Личный кабинет</h2>
       <div className={style.block}>
-        <div className={style.avatar}><img alt="" src={user.avatar} /></div>
-        <div>
+        <div className={style.avatar}><img alt="" src={token?.avatar} /></div>
+        <div className={style.description}>
           <p>
             Имя Фамилия :
-            {' '}
-            <span>{user.name}</span>
+            <span> {token?.name}</span>
           </p>
           <p>
-            Тип :
-            {' '}
-            <span>{user.about}</span>
+            Ник :
+            <span> {token?.about}</span>
           </p>
           <p>
-            группа :
-            {' '}
-            <span>{user.group}</span>
+            Группа :
+            <span> {token?.group}</span>
           </p>
           <p>
-            email :
-            {' '}
-            <span>{user.email}</span>
+            E-mail :
+            <span> {token?.email}</span>
           </p>
         </div>
 
       </div>
-      <button className={style.button} type="button" onClick={() => submit()}>Выйти</button>
+
     </div>
   )
 }
