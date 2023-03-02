@@ -25,27 +25,28 @@ export function ProductDetail() {
         <div className={style.card} >
             <div className={style.container} >
                 <div className={style.product}>
-                    {product?.discount ? (
-
-                        <div className={style.discount__picture}>
-                            <div className={style.tags}>
+                    <div className={style.discount__picture}>
+                        <div className={style.tags}>
+                            {product?.discount ? (
                                 <span>{product?.discount} %</span>
-                                {/* <span>{product?.tags[0]}</span>
-                                <span>{product?.tags[1]}</span> */}
-                            </div>
-                            <img
-                                className={style.product__picture}
-                                alt={product?.name}
-                                src={product?.pictures} />
-                        </div>
+                            ) : (
+                                ''
+                            )}
 
-                    ) : (
-                        <div className={style.nondiscount__picture}>
-                            <img
-                                alt={product?.name}
-                                src={product?.pictures} />
+                            {product?.tags.includes('new') ? (
+                                <span>Новинка</span>
+                            ) : (
+                                ''
+                            )}
                         </div>
-                    )}
+                        <img
+                            className={style.product__picture}
+                            alt={product?.name}
+                            src={product?.pictures} />
+                    </div>
+
+
+
                     <div className={style.about}>
                         {product?.discount ? (
                             <div>

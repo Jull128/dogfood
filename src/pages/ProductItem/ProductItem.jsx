@@ -6,7 +6,7 @@ import { getUserSelector } from "../../redux/slices/tokenSlice";
 import style from './style.module.css'
 
 export function ProductItem({
-    id, name, pictures, price, discount
+    id, name, pictures, price, discount, tags
 }) {
 
     const navigate = useNavigate()
@@ -30,6 +30,13 @@ export function ProductItem({
 
     return (
         <div onClick={showProductHandler} className={style.card} >
+            {tags.includes('new') ? (
+                <div className={style.tags}>
+                    <span>Новинка</span>
+                </div>
+            ) : (
+                ''
+            )}
             <div className={style.picture}>
                 <img
                     alt={name}

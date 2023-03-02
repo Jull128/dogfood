@@ -21,12 +21,14 @@ function App() {
     }
   }, [token]);
 
+  const path = window.location.pathname
+
   return (
     <Layout className={style.layout}>
       <Header />
       <Content >
         <Outlet />
-        {!token && <AuthForm />}
+        {!token && path !== '/signup' && <AuthForm />}
       </Content>
       <Footer />
     </Layout>

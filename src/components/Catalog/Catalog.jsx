@@ -22,6 +22,7 @@ export function Catalog({ search, products }) {
                 pictures={product.pictures}
                 wight={product.wight}
                 discount={product.discount}
+                tags={product.tags}
             />
         )
     }
