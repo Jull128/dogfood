@@ -5,7 +5,7 @@ import { Layout } from 'antd';
 import { Content } from 'antd/es/layout/layout';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getTokenSelector } from './redux/slices/tokenSlice';
 

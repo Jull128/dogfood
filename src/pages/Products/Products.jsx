@@ -1,7 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react"
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { api } from "../../api/api";
 import { Catalog } from "../../components/Catalog/Catalog";
 import { getSearchSelector } from "../../redux/slices/filterSlice";
@@ -12,15 +10,8 @@ import { getQueryKey } from "./util";
 
 export function ProductPage() {
 
-    const navigate = useNavigate()
     const token = useSelector(getTokenSelector)
     const search = useSelector(getSearchSelector)
-
-    useEffect(() => {
-        if (!token) {
-            navigate('/');
-        }
-    }, [token]);
 
     const {
         data: products,

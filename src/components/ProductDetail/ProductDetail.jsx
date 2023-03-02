@@ -64,7 +64,7 @@ export function ProductDetail() {
                         <button className={style.btn}>В корзину</button>
 
                         <div className={style.delivery}>
-                            <img src={delivery} />
+                            <img alt='Доставка' src={delivery} />
                             <div>
                                 <h3>Доставка по всему Миру!</h3>
 
@@ -75,7 +75,7 @@ export function ProductDetail() {
                         </div>
 
                         <div className={style.warranty}>
-                            <img src={warranty} />
+                            <img alt='Гарантия' src={warranty} />
                             <div>
                                 <h3>Гарантия качества</h3>
                                 <p>Если Вам не понравилось качество нашей продукции, мы вернем деньги, либо сделаем все возможное, чтобы удовлетворить ваши нужды.</p>

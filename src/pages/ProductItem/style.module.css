@@ -39,7 +39,7 @@
     margin: 0;
     height: 28px;
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     font-weight: 600;
     font-size: 18px;
 }

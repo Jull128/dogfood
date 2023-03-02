@@ -19,16 +19,16 @@ export function Header() {
     return (
         <ul className={style.header}>
             <li>
-                <NavLink to='products'><img className={style.link__logo} src={catalog} /></NavLink>
+                <NavLink to='products'><img alt='Каталог' className={style.link__logo} src={catalog} /></NavLink>
             </li>
             <li className={style.search} >
                 <Search />
             </li>
             <li>
-                <NavLink to='users/me'><img className={style.link__logo} src={dog} /></NavLink>
+                <NavLink to='users/me'><img alt='Личный кабинет' className={style.link__logo} src={dog} /></NavLink>
             </li>
 
-            {token && <li onClick={logoutHandler}><Link to="/"><img className={style.link__logo} src={exit} /></Link></li>}
+            {token && <li onClick={logoutHandler}><Link to="/"><img alt='Выход' className={style.link__logo} src={exit} /></Link></li>}
         </ul>
     )
 }
