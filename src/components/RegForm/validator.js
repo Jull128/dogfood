@@ -9,5 +9,7 @@ export const regValidationSchema = Yup.object({
         .required('Обязательное поле'),
     group: Yup.string()
         .required('Обязательное поле'),
+    avatar: Yup.string()
+        .required('Обязательное поле'),
 
 })

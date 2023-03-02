@@ -9,19 +9,19 @@
 }
 
 .field {
-    line-height: 32px;
-    width: 100%;
+    line-height: 28px;
+    width: 70%;
     text-align: center;
     padding: 4px;
-    border-radius: 4px;
-    font-size: 24px;
+    border-radius: 20px;
+    font-size: 20px;
     margin: 8px 0;
 }
 
 .error {
     color: rgb(180, 61, 61);
-    font-size: 24px;
-    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .button {

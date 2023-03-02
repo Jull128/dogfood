@@ -46,12 +46,13 @@ export function RegForm() {
                 <ErrorMessage component="p" name="avatar" className={style.error} />
 
                 <button disabled={isLoading} type="submit" className={style.button}  >Sign Up</button>
-                Registred? <Link to="/">Sign in</Link>
                 {isError && (
-                    <p >
+                    <p className={style.error}>
                         {error.message}
                     </p>
                 )}
+                Registred? <Link to="/">Sign in</Link>
+
             </Form>
         </Formik>
     )

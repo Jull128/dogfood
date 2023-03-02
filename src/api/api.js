@@ -36,7 +36,18 @@ class Api {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(values)
-        })
+        });
+
+        if (res.status === 401) {
+            throw new Error('Неверные логин или пароль');
+        }
+        if (res.status === 404) {
+            throw new Error('Пользователь с указанным email не найден');
+        }
+        if (res.status >= 300) {
+            throw new Error(`Ошибка, код ${res.status}`);
+        }
+
         return res.json()
     }
 

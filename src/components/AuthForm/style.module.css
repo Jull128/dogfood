@@ -9,19 +9,6 @@
 
 }
 
-.field {
-    display: flex;
-    justify-content: center;
-    width: 50%;
-    line-height: 32px;
-    text-align: center;
-    padding: 4px;
-    border-radius: 4px;
-    font-size: 24px;
-    margin: 8px 0;
-}
-
-
 .button {
     margin: 0px;
     width: 20%;
@@ -39,12 +26,30 @@
     transition: all 0.5s ease;
 }
 
-.disabled {
-    cursor: auto;
-}
-
 .button:hover:not([disabled]) {
     font-size: 24px;
     background-color: rgb(250, 228, 105);
     box-shadow: 4px 4px 2px rgb(189, 165, 33);
+}
+
+.disabled {
+    cursor: auto;
+}
+
+.error {
+    color: rgb(180, 61, 61);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.field {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    line-height: 28px;
+    text-align: center;
+    padding: 4px;
+    border-radius: 20px;
+    font-size: 20px;
+    margin: 8px 0;
 }

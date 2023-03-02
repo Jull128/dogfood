@@ -17,7 +17,7 @@ export function AuthForm() {
         password: '',
     }
 
-    const { mutateAsync, isLoading } = useMutation({
+    const { mutateAsync, isLoading, isError, error } = useMutation({
         mutationFn: (values) => api.auth(values).then((user) => {
             dispatch(setToken(user))
         })
@@ -42,6 +42,13 @@ export function AuthForm() {
                 <ErrorMessage component="p" className={style.error} name="password" />
 
                 <button disabled={isLoading} type="submit" className={style.button} >Войти</button>
+
+                {isError && (
+                    <p className={style.error}>
+                        {error.message}
+                    </p>
+                )}
+
                 Or <Link to="/signup">Sign up</Link>
             </Form>
         </Formik>
