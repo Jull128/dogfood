@@ -4,6 +4,7 @@ import { useMutation } from '@tanstack/react-query'
 import { api } from '../../api/api';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import style from './style.module.css'
+import { regValidationSchema } from './validator';
 
 export function RegForm() {
     const navigate = useNavigate()
@@ -27,6 +28,7 @@ export function RegForm() {
     return (
         <Formik
             initialValues={initialValues}
+            validationSchema={regValidationSchema}
             onSubmit={submitHandler}
         >
             <Form className={style.form}>
@@ -40,7 +42,7 @@ export function RegForm() {
                 <Field name="password" type="password" placeholder="password" className={style.field} />
                 <ErrorMessage component="p" name="password" className={style.error} />
 
-                <Field name="avatar" type="text" placeholder="URL adress" className={style.field} />
+                <Field name="avatar" type="text" placeholder="URL adress of avatar" className={style.field} />
                 <ErrorMessage component="p" name="avatar" className={style.error} />
 
                 <button disabled={isLoading} type="submit" className={style.button}  >Sign Up</button>

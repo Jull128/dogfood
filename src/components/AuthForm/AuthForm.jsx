@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query'
 import { useDispatch } from 'react-redux';
 import { setToken } from '../../redux/slices/tokenSlice';
+import { authValidationSchema } from './validator';
 
 export function AuthForm() {
     const navigate = useNavigate()
@@ -16,7 +17,7 @@ export function AuthForm() {
         password: '',
     }
 
-    const { mutateAsync, isLoading, isError, error } = useMutation({
+    const { mutateAsync, isLoading } = useMutation({
         mutationFn: (values) => api.auth(values).then((user) => {
             dispatch(setToken(user))
         })
@@ -30,6 +31,7 @@ export function AuthForm() {
     return (
         <Formik
             initialValues={initialValues}
+            validationSchema={authValidationSchema}
             onSubmit={submitHandler}
         >
             <Form className={style.form}>
