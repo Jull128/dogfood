@@ -7,6 +7,7 @@ import style from './style.module.css';
 import dog from './dog.svg';
 import exit from './exit.svg';
 import catalog from './catalog.svg';
+import cart from './cart.png';
 
 export function Header() {
     const token = useSelector(getTokenSelector);
@@ -26,6 +27,9 @@ export function Header() {
             </li>
             <li>
                 <NavLink to='users/me'><img alt='Личный кабинет' className={style.link__logo} src={dog} /></NavLink>
+            </li>
+            <li>
+                <NavLink to='cart'><img alt='Корзина' className={style.link__logo} src={cart} /></NavLink>
             </li>
 
             {token && <li onClick={logoutHandler}><Link to="/"><img alt='Выход' className={style.link__logo} src={exit} /></Link></li>}

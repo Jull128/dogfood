@@ -1,20 +1,15 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addNewProductInCart } from "../../redux/slices/cartSlice";
 import { getUserSelector } from "../../redux/slices/tokenSlice";
 import style from './style.module.css'
 
-export function ProductItem({
-    id, name, pictures, price, discount, tags
+export function CartItem({
+    id, name, pictures, price, discount, wight
 }) {
-    const dispatch = useDispatch()
+
     const navigate = useNavigate()
     const token = useSelector(getUserSelector)
-    function addProductInCartHandler() {
-        console.log({ id })
-        dispatch(addNewProductInCart({ id }))
-    }
 
     useEffect(() => {
         if (!token) {
@@ -34,13 +29,6 @@ export function ProductItem({
 
     return (
         <div onClick={showProductHandler} className={style.card} >
-            {tags.includes('new') ? (
-                <div className={style.tags}>
-                    <span>Новинка</span>
-                </div>
-            ) : (
-                ''
-            )}
             <div className={style.picture}>
                 <img
                     alt={name}
@@ -60,7 +48,6 @@ export function ProductItem({
                     </div>
                 )}
                 <p>{name}</p>
-                <button onClick={addProductInCartHandler} className={style.btn}>В корзину</button>
             </div>
         </div>
     )

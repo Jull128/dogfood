@@ -10,6 +10,7 @@ import { User } from './pages/User/User';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
 import { ProductDetail } from './components/ProductDetail/ProductDetail'
+import { CartPage } from './pages/CartPage/CartPage';
 
 const queryClient = new QueryClient()
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/users/me',
         element: <User />
+      },
+      {
+        path: '/cart',
+        element: <CartPage />
       },
     ]
   },

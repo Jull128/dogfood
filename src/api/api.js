@@ -99,6 +99,15 @@ class Api {
         return res.json()
     }
 
+    getProductsByIds(ids, token) {
+        return Promise.all(ids.map((id) => fetch(`${this.url}/products/${id}`, {
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + token,
+            },
+        })
+            .then((res) => res.json())));
+    }
 }
 
 const api = new Api('9-gr');
