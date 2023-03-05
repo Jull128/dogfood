@@ -16,8 +16,8 @@ function App() {
   const token = useSelector(getTokenSelector)
 
   useEffect(() => {
-    if (!token) {
-      navigate('/');
+    if (token) {
+      navigate('/products');
     }
   }, [token]);
 
