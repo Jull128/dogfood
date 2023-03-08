@@ -29,6 +29,9 @@ export function CartItem({
 
     return (
         <div onClick={showProductHandler} className={style.card} >
+            <div className={style.checkbox}>
+                <input className="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" />
+            </div>
             <div className={style.picture}>
                 <img
                     alt={name}
@@ -48,6 +51,9 @@ export function CartItem({
                     </div>
                 )}
                 <p>{name}</p>
+            </div>
+            <div >
+                <p>удалить</p>
             </div>
         </div>
     )

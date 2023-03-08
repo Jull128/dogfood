@@ -100,13 +100,14 @@ class Api {
     }
 
     getProductsByIds(ids, token) {
-        return Promise.all(ids.map((id) => fetch(`${this.url}/products/${id}`, {
-            headers: {
-                'Content-type': 'application/json',
-                'Authorization': 'Bearer ' + token,
-            },
-        })
-            .then((res) => res.json())));
+        return Promise.all(
+            ids.map(id => fetch(`${this.url}/products/${id}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token,
+                },
+            }).then((res) => res.json())),
+        );
     }
 }
 

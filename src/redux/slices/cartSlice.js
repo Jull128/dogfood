@@ -5,6 +5,9 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: initState.cart,
     reducers: {
+        cartInitialize(state, action) {
+            return action.payload
+        },
         addNewProductInCart(state, action) {
             state.push(action.payload)
         },
@@ -27,6 +30,6 @@ const cartSlice = createSlice({
     },
 })
 
-export const { addNewProductInCart, deleteProduct, countIncrement, countDecrement } = cartSlice.actions;
+export const { cartInitialize, addNewProductInCart, deleteProduct, countIncrement, countDecrement } = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;
 export const getCartSelector = (state) => state.cart;
