@@ -1,16 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { api } from "../../api/api";
 import { getTokenSelector } from "../../redux/slices/tokenSlice";
 import style from './style.module.css'
 import delivery from './delivery.svg'
 import warranty from './warranty.svg'
+import { addNewProductInCart } from "../../redux/slices/cartSlice";
 
 
 export function ProductDetail() {
     const { id } = useParams();
     const token = useSelector(getTokenSelector);
+    const dispatch = useDispatch()
+    function addProductInCartHandler() {
+        dispatch(addNewProductInCart({ id }))
+    }
 
     const {
         data: product,
@@ -61,7 +66,7 @@ export function ProductDetail() {
                             </div>
                         )}
                         {/* add count */}
-                        <button className={style.btn}>В корзину</button>
+                        <button onClick={addProductInCartHandler} className={style.btn}>В корзину</button>
 
                         <div className={style.delivery}>
                             <img alt='Доставка' src={delivery} />

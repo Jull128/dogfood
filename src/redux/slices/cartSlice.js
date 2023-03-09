@@ -5,12 +5,18 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: initState.cart,
     reducers: {
-        cartInitialize(state, action) {
-            return action.payload
-        },
         addNewProductInCart(state, action) {
-            state.push(action.payload)
+            const newProduct = {
+                [action.payload.id]: {
+                    count: 1,
+                    isChecked: true,
+                },
+            }
+            Object.assign(state, newProduct)
         },
+        // addNewProductInCart(state, action) {
+        //     state.push(action.payload)
+        // },
         deleteProduct(state, action) {
             return state.filter((product) => product.id !== action.payload);
         },

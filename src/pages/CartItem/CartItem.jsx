@@ -1,21 +1,17 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getUserSelector } from "../../redux/slices/tokenSlice";
+import { deleteProduct } from "../../redux/slices/cartSlice";
 import style from './style.module.css'
+import trash from './trash.png'
+import favorite from './favorite.png'
+
 
 export function CartItem({
-    id, name, pictures, price, discount, wight
+    id, name, pictures, price, discount
 }) {
 
     const navigate = useNavigate()
-    const token = useSelector(getUserSelector)
-
-    useEffect(() => {
-        if (!token) {
-            navigate('/');
-        }
-    }, [token]);
+    const dispatch = useDispatch()
 
     function showProductHandler(event) {
         if (
@@ -24,6 +20,12 @@ export function CartItem({
             navigate(`/products/${id}`);
         }
     }
+
+    function deleteHandler() {
+        dispatch(deleteProduct(id))
+    }
+
+    console.log(id);
 
     const discount_price = Math.round(price - price * discount / 100);
 
@@ -52,8 +54,9 @@ export function CartItem({
                 )}
                 <p>{name}</p>
             </div>
-            <div >
-                <p>удалить</p>
+            <div className={style.button} >
+                <span onClick={deleteHandler}><img src={favorite} /></span>
+                <span onClick={deleteHandler}><img src={trash} /></span>
             </div>
         </div>
     )

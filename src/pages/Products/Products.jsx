@@ -20,7 +20,6 @@ export function ProductPage() {
         queryFn: () => api.getProducts(search, token),
         enabled: !!(token),
     })
-    console.log(products);
 
     return (
         <div className={(products?.total !== 0) && style.products}>
