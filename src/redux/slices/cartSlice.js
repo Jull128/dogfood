@@ -6,13 +6,18 @@ const cartSlice = createSlice({
     initialState: initState.cart,
     reducers: {
         addNewProductInCart(state, action) {
-            const newProduct = {
-                [action.payload.id]: {
+            const currentProduct = state.find(
+                (product) => product.id === action.payload.id,
+            );
+            if (currentProduct) {
+                currentProduct.count++;
+            } else {
+                state.push({
+                    ...action.payload,
+                    isChecked: false,
                     count: 1,
-                    isChecked: true,
-                },
+                });
             }
-            Object.assign(state, newProduct)
         },
         // addNewProductInCart(state, action) {
         //     state.push(action.payload)

@@ -25,12 +25,10 @@ export function CartItem({
         dispatch(deleteProduct(id))
     }
 
-    console.log(id);
-
     const discount_price = Math.round(price - price * discount / 100);
 
     return (
-        <div onClick={showProductHandler} className={style.card} >
+        <div className={style.card} >
             <div className={style.checkbox}>
                 <input className="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" />
             </div>
@@ -39,7 +37,7 @@ export function CartItem({
                     alt={name}
                     src={pictures} />
             </div>
-            <div className={style.description}>
+            <div onClick={showProductHandler} className={style.description}>
 
                 {discount ? (
                     <div >
