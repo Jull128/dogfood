@@ -18,7 +18,7 @@ export function CartPage() {
         if (!token) {
             navigate('/');
         }
-    }, [token]);
+    }, [token, navigate]);
 
     const {
         data: products,
@@ -62,14 +62,25 @@ export function CartPage() {
 
             {checkedProducts.length ? (
                 <div className={style.cart}>
-                    <p>{`Ваша корзина ${totalCount}`}
-                        {totalCount === 1 ? ' товар' : ''}
-                        {totalCount > 1 && totalCount < 5 ? ' товара' : ''}
-                        {totalCount > 4 ? ' товаров' : ''}
-                    </p>
-
+                    <div className={style.line}>
+                        <span className={style.cart__head}>{`Ваша корзина `}</span>
+                        <span className={style.cart__content}>
+                            {totalCount}
+                            {totalCount === 1 ? ' товар' : ''}
+                            {totalCount > 1 && totalCount < 5 ? ' товара' : ''}
+                            {totalCount > 4 ? ' товаров' : ''}
+                        </span>
+                    </div>
+                    <div>
+                        <span>{`Ваша корзина `}</span>
+                        <span>
+                            {totalCount}
+                            {totalCount === 1 ? ' товар' : ''}
+                            {totalCount > 1 && totalCount < 5 ? ' товара' : ''}
+                            {totalCount > 4 ? ' товаров' : ''}
+                        </span>
+                    </div>
                 </div>
-
             ) : (
                 <div className={style.cart}>
                     Выберите товары, чтобы перейти к оформлению заказа

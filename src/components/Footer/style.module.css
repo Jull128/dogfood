@@ -10,7 +10,7 @@
     margin: 0;
     height: 150px;
     text-align: center;
-    min-width: 1200px;
+    min-width: 100vw;
 }
 
 .link {

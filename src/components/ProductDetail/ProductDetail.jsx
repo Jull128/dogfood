@@ -13,6 +13,9 @@ export function ProductDetail() {
     const { id } = useParams();
     const token = useSelector(getTokenSelector);
     const dispatch = useDispatch()
+
+
+
     function addProductInCartHandler() {
         dispatch(addNewProductInCart({ id }))
     }
@@ -24,11 +27,16 @@ export function ProductDetail() {
         queryFn: () => api.getProductById(id, token),
         enabled: !!(token),
     })
+
+    // console.log(product.reviews[i]);
     const discount_price = Math.round(product?.price - product?.price * product?.discount / 100);
 
     return (
         <div className={style.card} >
             <div className={style.container} >
+                <h3 className={style.name}>{product?.name}</h3>
+                {/* <span>{setRate(product?.reviews.rating)}</span> */}
+                <hr />
                 <div className={style.product}>
                     <div className={style.discount__picture}>
                         <div className={style.tags}>
@@ -49,7 +57,6 @@ export function ProductDetail() {
                             alt={product?.name}
                             src={product?.pictures} />
                     </div>
-
 
 
                     <div className={style.about}>
@@ -91,7 +98,6 @@ export function ProductDetail() {
                 </div>
                 <div className={style.description}>
                     <span>Описание</span>
-                    <p>{product?.name}</p>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam laborum nulla, omnis totam adipisci nesciunt aliquam, eius, sed labore esse! Sit consequatur non libero hic. Blanditiis odit sapiente fugiat?</p>
                 </div>
             </div>
