@@ -11,6 +11,7 @@
     padding: 15px 15%;
     margin: 0;
     height: 70px;
+    min-width: 1200px;
 }
 
 .header li:nth-child(3) {

@@ -1,10 +1,27 @@
-.products {
-    justify-content: center;
+.cart {
+    max-width: 300px;
+    max-height: 300px;
     display: flex;
-    flex-direction: column;
+    background-color: rgba(211, 211, 211, 0.581);
+    border-radius: 25px;
+    padding: 15px;
+    font-size: 12px;
+}
+
+.container {
+    display: flex;
     margin-top: 20px;
     margin-left: 15%;
     margin-right: 15%;
     margin-bottom: 20px;
+    gap: 20px;
+}
+
+.products {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
     min-height: 100%;
+    width: 100%;
+    gap: 20px;
 }

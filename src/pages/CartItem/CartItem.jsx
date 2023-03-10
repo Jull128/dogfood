@@ -1,6 +1,6 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteProduct } from "../../redux/slices/cartSlice";
+import { deleteProduct, changeStatusIsChecked, getCartSelector } from "../../redux/slices/cartSlice";
 import style from './style.module.css'
 import trash from './trash.png'
 import favorite from './favorite.png'
@@ -12,6 +12,7 @@ export function CartItem({
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const cart = useSelector(getCartSelector);
 
     function showProductHandler(event) {
         if (
@@ -21,8 +22,20 @@ export function CartItem({
         }
     }
 
+    let count = 0;
+    let isChecked = false;
+    const currentProduct = cart.find((product) => product.id === id);
+    if (currentProduct) {
+        count = currentProduct.count;
+        isChecked = currentProduct.isChecked;
+    }
+
     function deleteHandler() {
         dispatch(deleteProduct(id))
+    }
+
+    function isCheckedHandler() {
+        dispatch(changeStatusIsChecked(id))
     }
 
     const discount_price = Math.round(price - price * discount / 100);
@@ -30,7 +43,7 @@ export function CartItem({
     return (
         <div className={style.card} >
             <div className={style.checkbox}>
-                <input className="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" />
+                <input onChange={isCheckedHandler} checked={isChecked} className="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" />
             </div>
             <div className={style.picture}>
                 <img
