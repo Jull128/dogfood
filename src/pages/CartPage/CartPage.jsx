@@ -29,9 +29,7 @@ export function CartPage() {
     })
 
     const checkedProducts = cart.filter((product) => product.isChecked)
-
-    console.log(cart);
-    console.log(checkedProducts);
+    const totalCount = checkedProducts.reduce((acc, val) => acc + val.count, 0);
 
     if (!token) {
         return (
@@ -64,18 +62,12 @@ export function CartPage() {
 
             {checkedProducts.length ? (
                 <div className={style.cart}>
-                    Ваша корзина
-                    1 товар • 60 гр
-                    Товары (1)
-                    1 049 ₽
-                    Скидка
+                    <p>{`Ваша корзина ${totalCount}`}
+                        {totalCount === 1 ? ' товар' : ''}
+                        {totalCount > 1 && totalCount < 5 ? ' товара' : ''}
+                        {totalCount > 4 ? ' товаров' : ''}
+                    </p>
 
-                    Подробнее
-                    - 217 ₽
-                    Общая стоимость
-                    832 ₽
-                    При оплате Ozon Картой
-                    764 ₽
                 </div>
 
             ) : (

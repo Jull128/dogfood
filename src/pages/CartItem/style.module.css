@@ -37,6 +37,8 @@
 }
 
 .description {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     text-align: left;
@@ -140,6 +142,17 @@
     display: block;
     height: 14px;
     margin: 0;
+}
+
+.quantityWrapper {
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    border: 2px solid rgb(250, 228, 105);
+    border-radius: 15px;
+    padding: 4px;
 }
 
 .quantityButton {

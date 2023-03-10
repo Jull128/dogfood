@@ -79,7 +79,7 @@ export function CartItem({
                         onClick={() => countDecrementHandler(id)}
                         className={style.quantityButton}
                     >
-                        <i className="fa-solid fa-cat" />
+                        <i class="fa-solid fa-minus" />
                     </button>
                     {count}
                     <button

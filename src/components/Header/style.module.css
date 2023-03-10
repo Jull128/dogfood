@@ -18,6 +18,38 @@
     margin-left: auto;
 }
 
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.box__cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart {
+    height: 18px;
+    width: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+    position: relative;
+    margin: 0;
+    top: -5px;
+    left: -7px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: rgb(244, 75, 75);
+}
+
 .search {
     line-height: 28px;
     padding: 4px;
@@ -53,4 +85,12 @@
 .link:hover {
     color: white;
     font-size: 20px;
+}
+
+.text {
+    margin: 0;
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    font-weight: 600;
 }
