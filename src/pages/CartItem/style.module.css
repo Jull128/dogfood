@@ -141,3 +141,9 @@
     height: 14px;
     margin: 0;
 }
+
+.quantityButton {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
