@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteProduct, changeStatusIsChecked, getCartSelector } from "../../redux/slices/cartSlice";
+import { deleteProduct, changeStatusIsChecked, getCartSelector, countIncrement, countDecrement } from "../../redux/slices/cartSlice";
 import style from './style.module.css'
 import trash from './trash.png'
 import favorite from './favorite.png'
 
 
 export function CartItem({
-    id, name, pictures, price, discount
+    id, name, pictures, price, discount, stock
 }) {
 
     const navigate = useNavigate()
@@ -38,6 +38,13 @@ export function CartItem({
         dispatch(changeStatusIsChecked(id))
     }
 
+    function countIncrementHandler() {
+        dispatch(countIncrement(id));
+    }
+    function countDecrementHandler() {
+        dispatch(countDecrement(id));
+    }
+
     const discount_price = Math.round(price - price * discount / 100);
 
     return (
@@ -64,6 +71,27 @@ export function CartItem({
                     </div>
                 )}
                 <p>{name}</p>
+
+                <div className={style.quantityWrapper}>
+                    <button
+                        type="button"
+                        disabled={count < 2}
+                        onClick={() => countDecrementHandler(id)}
+                        className={style.quantityButton}
+                    >
+                        <i className="fa-solid fa-minus" />
+                    </button>
+                    {count}
+                    <button
+                        type="button"
+                        disabled={count > stock - 1}
+                        onClick={() => countIncrementHandler(id)}
+                        className={style.quantityButton}
+                    >
+                        <i className="fa-solid fa-plus" />
+                    </button>
+                </div>
+
             </div>
             <div className={style.button} >
                 <span onClick={deleteHandler}><img src={favorite} /></span>

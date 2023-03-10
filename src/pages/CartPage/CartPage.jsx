@@ -57,6 +57,7 @@ export function CartPage() {
                         wight={product.wight}
                         discount={product.discount}
                         tags={product.tags}
+                        stock={product.stock}
                     />
                 ))}
             </div>
