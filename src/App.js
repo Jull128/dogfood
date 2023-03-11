@@ -10,10 +10,10 @@ import { useSelector } from 'react-redux';
 import { getTokenSelector } from './redux/slices/tokenSlice';
 
 
-
 function App() {
   const navigate = useNavigate()
   const token = useSelector(getTokenSelector)
+
 
   useEffect(() => {
     if (token) {

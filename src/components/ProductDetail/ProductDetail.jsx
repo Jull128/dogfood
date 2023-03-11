@@ -28,14 +28,21 @@ export function ProductDetail() {
         enabled: !!(token),
     })
 
-    // console.log(product.reviews[i]);
     const discount_price = Math.round(product?.price - product?.price * product?.discount / 100);
 
     return (
         <div className={style.card} >
             <div className={style.container} >
                 <h3 className={style.name}>{product?.name}</h3>
-                {/* <span>{setRate(product?.reviews.rating)}</span> */}
+                <div className={style.rate}>
+                    <div className={style.rateActive}>
+                        <i className="fa-regular fa-star"></i>
+                        <i className="fa-regular fa-star"></i>
+                        <i className="fa-regular fa-star"></i>
+                        <i className="fa-regular fa-star"></i>
+                        <i className="fa-regular fa-star"></i>
+                    </div>
+                </div>
                 <hr />
                 <div className={style.product}>
                     <div className={style.discount__picture}>
