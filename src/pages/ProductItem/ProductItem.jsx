@@ -25,7 +25,7 @@ export function ProductItem({
         if (!token) {
             navigate('/');
         }
-    }, [token]);
+    }, [token, navigate]);
 
     function showProductHandler(event) {
         if (

@@ -94,8 +94,8 @@ export function CartItem({
 
             </div>
             <div className={style.button} >
-                <span onClick={deleteHandler}><img src={favorite} /></span>
-                <span onClick={deleteHandler}><img src={trash} /></span>
+                <span onClick={deleteHandler}><img src={favorite} alt='В избранное' /></span>
+                <span onClick={deleteHandler}><img src={trash} alt='Удалить' /></span>
             </div>
         </div>
     )

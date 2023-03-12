@@ -6,7 +6,7 @@ import { getTokenSelector } from "../../redux/slices/tokenSlice";
 import style from './style.module.css'
 
 
-export function Reviews() {
+export function Rating() {
     const { id } = useParams();
     const token = useSelector(getTokenSelector);
 
@@ -19,23 +19,32 @@ export function Reviews() {
     })
 
     const ratingByProduct = reviews && ((reviews.reduce((acc, val) => acc + +val.rating, 0)) / reviews.length).toFixed(1);
-    const ratings = document.querySelectorAll(".style_rate__9tXTT")
+    const ratingCount = reviews && reviews.length
 
+    function ratingCountFun(ratingCount, words) {
+        ratingCount = Math.abs(ratingCount) % 100;
+        let num = ratingCount % 10;
+        if (ratingCount > 10 && ratingCount < 20) return words[2];
+        if (num > 1 && num < 5) return words[1];
+        if (num == 1) return words[0];
+        return words[2];
+    }
+
+    const ratings = document.querySelectorAll("#rate")
     if (ratings.length) {
         initRating()
     }
 
     function initRating(i = ratingByProduct) {
         const percent = i / 0.05;
-        const ratingActive = ratings[0].querySelector('.style_rateActive__hcYwV');
+        const ratingActive = ratings[0].querySelector('#rateActive');
         ratingActive.style.width = `${percent}%`
     }
 
-
     return (
         <div className={style.container}>
-            <div className={style.rate}>
-                <div className={style.rateActive}></div>
+            <div className={style.rate} id='rate'>
+                <div className={style.rateActive} id='rateActive'></div>
                 <div className={style.rateAll}>
                     <input className={style.rateItem} type="radio" id="star-1" name="rating" value="1"></input>
                     <input className={style.rateItem} type="radio" id="star-2" name="rating" value="2"></input>
@@ -44,7 +53,10 @@ export function Reviews() {
                     <input className={style.rateItem} type="radio" id="star-5" name="rating" value="5"></input>
                 </div>
             </div>
-            <div>{ratingByProduct}</div>
+            <div>
+                {ratingCount}
+                {ratingCountFun(ratingCount, [' отзыв', ' отзыва', ' отзывов'])}
+            </div>
         </div>
     )
 }

@@ -6,8 +6,8 @@ import { getTokenSelector } from "../../redux/slices/tokenSlice";
 import style from './style.module.css'
 import delivery from './delivery.svg'
 import warranty from './warranty.svg'
-import { addNewProductInCart, deleteProduct, getCartSelector } from "../../redux/slices/cartSlice";
-import { Reviews } from "../Reviews/Reviews";
+import { addNewProductInCart, countDecrement, countIncrement, deleteProduct, getCartSelector } from "../../redux/slices/cartSlice";
+import { Rating } from "../Rating/Rating";
 
 
 export function ProductDetail() {
@@ -21,6 +21,20 @@ export function ProductDetail() {
     }
     function deleteHandler() {
         dispatch(deleteProduct(id))
+    }
+    function countIncrementHandler() {
+        dispatch(countIncrement(id));
+    }
+    function countDecrementHandler() {
+        dispatch(countDecrement(id));
+    }
+
+    let count = 0;
+    let isChecked = false;
+    const currentProduct = cart.find((product) => product.id === id);
+    if (currentProduct) {
+        count = currentProduct.count;
+        isChecked = currentProduct.isChecked;
     }
 
     const {
@@ -39,7 +53,7 @@ export function ProductDetail() {
         <div className={style.card} >
             <div className={style.container} >
                 <h3 className={style.name}>{product?.name}</h3>
-                <Reviews />
+                <Rating />
                 <hr />
                 <div className={style.product}>
                     <div className={style.discount__picture}>
@@ -76,15 +90,34 @@ export function ProductDetail() {
                                 <span className={style.normal__price}>{product?.price} ₽</span>
                             </div>
                         )}
-                        {/* add count */}
-                        <button onClick={isInCart(id) ? deleteHandler : addProductInCartHandler} className={isInCart(id) ? style.btn__active : style.btn}>
-                            {isInCart(id) ? (
-                                <p className={style.btn__text}>В корзине</p>
-                            ) : (
-                                <p className={style.btn__text}>В корзину</p>
-                            )}
-                        </button>
-
+                        <div className={style.btn__box}>
+                            <div className={style.quantityWrapper}>
+                                <button
+                                    type="button"
+                                    disabled={count < 2}
+                                    onClick={() => countDecrementHandler(id)}
+                                    className={style.quantityButton}
+                                >
+                                    <i className="fa-solid fa-minus" />
+                                </button>
+                                {count}
+                                <button
+                                    type="button"
+                                    disabled={count > product?.stock - 1}
+                                    onClick={() => countIncrementHandler(id)}
+                                    className={style.quantityButton}
+                                >
+                                    <i className="fa-solid fa-plus" />
+                                </button>
+                            </div>
+                            <button onClick={isInCart(id) ? deleteHandler : addProductInCartHandler} className={isInCart(id) ? style.btn__active : style.btn}>
+                                {isInCart(id) ? (
+                                    <p className={style.btn__text}>В корзине</p>
+                                ) : (
+                                    <p className={style.btn__text}>В корзину</p>
+                                )}
+                            </button>
+                        </div>
                         <div className={style.delivery}>
                             <img alt='Доставка' src={delivery} />
                             <div>
