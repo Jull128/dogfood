@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addNewProductInCart } from "../../redux/slices/cartSlice";
+import { addNewProductInCart, deleteProduct, getCartSelector } from "../../redux/slices/cartSlice";
 import { getUserSelector } from "../../redux/slices/tokenSlice";
 import style from './style.module.css'
 
@@ -11,9 +11,14 @@ export function ProductItem({
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const token = useSelector(getUserSelector)
+    const cart = useSelector(getCartSelector)
+
     function addProductInCartHandler() {
-        console.log({ id })
         dispatch(addNewProductInCart({ id }))
+    }
+
+    function deleteHandler() {
+        dispatch(deleteProduct(id))
     }
 
     useEffect(() => {
@@ -31,6 +36,7 @@ export function ProductItem({
     }
 
     const discount_price = Math.round(price - price * discount / 100);
+    const isInCart = (productList) => cart.find((product) => product.id === productList)
 
     return (
         <div onClick={showProductHandler} className={style.card} >
@@ -60,7 +66,13 @@ export function ProductItem({
                     </div>
                 )}
                 <p>{name}</p>
-                <button onClick={addProductInCartHandler} className={style.btn}>В корзину</button>
+                <button onClick={isInCart(id) ? deleteHandler : addProductInCartHandler} className={isInCart(id) ? style.btn__active : style.btn}>
+                    {isInCart(id) ? (
+                        <p className={style.btn__text}>В корзине</p>
+                    ) : (
+                        <p className={style.btn__text}>В корзину</p>
+                    )}
+                </button>
             </div>
         </div>
     )

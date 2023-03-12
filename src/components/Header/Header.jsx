@@ -14,7 +14,7 @@ export function Header() {
     const token = useSelector(getTokenSelector);
     const dispatch = useDispatch()
     const cart = useSelector(getCartSelector);
-    const checkedProducts = cart.filter((product) => product.isChecked)
+    const checkedProducts = cart.filter((product) => product.id)
     const totalCount = checkedProducts.reduce((acc, val) => acc + val.count, 0);
 
     function logoutHandler() {

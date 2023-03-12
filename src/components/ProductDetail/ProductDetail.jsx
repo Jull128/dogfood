@@ -6,18 +6,21 @@ import { getTokenSelector } from "../../redux/slices/tokenSlice";
 import style from './style.module.css'
 import delivery from './delivery.svg'
 import warranty from './warranty.svg'
-import { addNewProductInCart } from "../../redux/slices/cartSlice";
+import { addNewProductInCart, deleteProduct, getCartSelector } from "../../redux/slices/cartSlice";
+import { Reviews } from "../Reviews/Reviews";
 
 
 export function ProductDetail() {
     const { id } = useParams();
     const token = useSelector(getTokenSelector);
     const dispatch = useDispatch()
-
-
+    const cart = useSelector(getCartSelector)
 
     function addProductInCartHandler() {
         dispatch(addNewProductInCart({ id }))
+    }
+    function deleteHandler() {
+        dispatch(deleteProduct(id))
     }
 
     const {
@@ -25,24 +28,18 @@ export function ProductDetail() {
     } = useQuery({
         queryKey: ['productById'],
         queryFn: () => api.getProductById(id, token),
-        enabled: !!(token),
+        enabled: !!token,
     })
 
     const discount_price = Math.round(product?.price - product?.price * product?.discount / 100);
+    const isInCart = (productList) => cart.find((product) => product.id === productList)
 
     return (
+
         <div className={style.card} >
             <div className={style.container} >
                 <h3 className={style.name}>{product?.name}</h3>
-                <div className={style.rate}>
-                    <div className={style.rateActive}>
-                        <i className="fa-regular fa-star"></i>
-                        <i className="fa-regular fa-star"></i>
-                        <i className="fa-regular fa-star"></i>
-                        <i className="fa-regular fa-star"></i>
-                        <i className="fa-regular fa-star"></i>
-                    </div>
-                </div>
+                <Reviews />
                 <hr />
                 <div className={style.product}>
                     <div className={style.discount__picture}>
@@ -80,7 +77,13 @@ export function ProductDetail() {
                             </div>
                         )}
                         {/* add count */}
-                        <button onClick={addProductInCartHandler} className={style.btn}>В корзину</button>
+                        <button onClick={isInCart(id) ? deleteHandler : addProductInCartHandler} className={isInCart(id) ? style.btn__active : style.btn}>
+                            {isInCart(id) ? (
+                                <p className={style.btn__text}>В корзине</p>
+                            ) : (
+                                <p className={style.btn__text}>В корзину</p>
+                            )}
+                        </button>
 
                         <div className={style.delivery}>
                             <img alt='Доставка' src={delivery} />

@@ -61,13 +61,13 @@ export function CartItem({
 
                 {discount ? (
                     <div >
-                        <h3 className={style.old__price}>{price} ₽</h3>
-                        <span className={style.discount}>{discount_price} ₽</span>
+                        <h3 className={style.old__price}>{(price * count)} ₽</h3>
+                        <span className={style.discount}>{(discount_price * count)} ₽</span>
                     </div>
 
                 ) : (
                     <div >
-                        <h3 className={style.normal__price}>{price} ₽</h3>
+                        <h3 className={style.normal__price}>{(price * count)} ₽</h3>
                     </div>
                 )}
                 <p>{name}</p>

@@ -13,7 +13,6 @@ export function CartPage() {
     const cart = useSelector(getCartSelector);
     const navigate = useNavigate();
 
-
     useEffect(() => {
         if (!token) {
             navigate('/');
@@ -28,8 +27,40 @@ export function CartPage() {
         enabled: !!(token),
     })
 
-    const checkedProducts = cart.filter((product) => product.isChecked)
+    const checkedProducts = cart.filter((product) => product.isChecked).filter((cartProduct) => products && products.find((product) => cartProduct.id === product['_id']));
     const totalCount = checkedProducts.reduce((acc, val) => acc + val.count, 0);
+
+    let totalCostWithoutDiscont = 0;
+    checkedProducts.map((product) => {
+        const checkedProduct = products && products.find((el) => product.id === el['_id']);
+        totalCostWithoutDiscont
+            += checkedProduct.price
+            * product.count;
+        return totalCostWithoutDiscont;
+    });
+
+    let totalCost = 0;
+    checkedProducts.map((product) => {
+        const checkedProduct = products && products.find((el) => product.id === el['_id']);
+        totalCost
+            += checkedProduct.price
+            * (1 - checkedProduct.discount / 100)
+            * product.count;
+        return totalCost;
+    });
+
+
+    let totalDiscount = 0;
+    checkedProducts.map((product) => {
+        const checkedProduct = products.find((el) => product.id === el['_id']);
+        totalDiscount
+            += ((checkedProduct.price
+                * (1 - checkedProduct.discount / 100)
+                * product.count)
+                - (checkedProduct.price
+                    * product.count)) * (-1);
+        return totalDiscount;
+    });
 
     if (!token) {
         return (
@@ -71,13 +102,23 @@ export function CartPage() {
                             {totalCount > 4 ? ' товаров' : ''}
                         </span>
                     </div>
-                    <div>
-                        <span>{`Ваша корзина `}</span>
-                        <span>
-                            {totalCount}
-                            {totalCount === 1 ? ' товар' : ''}
-                            {totalCount > 1 && totalCount < 5 ? ' товара' : ''}
-                            {totalCount > 4 ? ' товаров' : ''}
+                    <div className={style.line}>
+                        <span className={style.cart__head_two}>{`Товары (${totalCount})`}</span>
+                        <span className={style.cart__price}>
+                            {`${totalCostWithoutDiscont} ₽`}
+                        </span>
+                    </div>
+                    <div className={style.line}>
+                        <span className={style.cart__head_two}>Скидка</span>
+                        <span className={style.cart__discount}>
+                            {`- ${totalDiscount} ₽`}
+                        </span>
+                    </div>
+                    <hr />
+                    <div className={style.line}>
+                        <span className={style.cart__head_third}>Общая стоимость</span>
+                        <span className={style.cart__total_price}>
+                            {`${totalCost} ₽`}
                         </span>
                     </div>
                 </div>

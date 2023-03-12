@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.rate {
+    position: relative;
+    margin-right: 5px;
+}
+
+.rate::before {
+    font-family: "FontAwesome";
+    content: "\f005\f005\f005\f005\f005";
+    display: block;
+    color: lightgray;
+}
+
+.rateAll {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.rateActive {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.rateActive::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: "FontAwesome";
+    content: "\f005\f005\f005\f005\f005";
+    width: 100%;
+    height: 100%;
+    color: gold;
+}
+
+.rateItem {
+    flex: 0 0 20%;
+    margin: 0;
+    height: 100%;
+    opacity: 0;
+}
