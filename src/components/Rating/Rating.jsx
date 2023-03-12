@@ -20,6 +20,18 @@ export function Rating() {
 
     const ratingByProduct = reviews && ((reviews.reduce((acc, val) => acc + +val.rating, 0)) / reviews.length).toFixed(1);
     const ratingCount = reviews && reviews.length
+    console.log(ratingByProduct);
+
+    const ratings = document.querySelectorAll("#rate")
+    if (ratings.length > 0) {
+        initRating()
+    }
+    console.log(ratings);
+    function initRating(i = ratingByProduct) {
+        const percent = i / 0.05;
+        const ratingActive = ratings[0].querySelector('#rateActive');
+        ratingActive.style.width = `${percent}%`
+    }
 
     function ratingCountFun(ratingCount, words) {
         ratingCount = Math.abs(ratingCount) % 100;
@@ -28,17 +40,6 @@ export function Rating() {
         if (num > 1 && num < 5) return words[1];
         if (num == 1) return words[0];
         return words[2];
-    }
-
-    const ratings = document.querySelectorAll("#rate")
-    if (ratings.length) {
-        initRating()
-    }
-
-    function initRating(i = ratingByProduct) {
-        const percent = i / 0.05;
-        const ratingActive = ratings[0].querySelector('#rateActive');
-        ratingActive.style.width = `${percent}%`
     }
 
     return (
