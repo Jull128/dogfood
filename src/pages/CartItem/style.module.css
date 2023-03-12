@@ -2,15 +2,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 5px;
     position: relative;
     background-color: white;
     border-radius: 20px;
-    height: 150px;
+    height: 120px;
     cursor: pointer;
     transition: all 0.5s ease;
     font-family: 'Montserrat', sans-serif;
-
 }
 
 .checkbox {
@@ -20,8 +19,8 @@
 }
 
 .checkbox input {
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
 }
 
 .discount {
@@ -30,7 +29,7 @@
     padding: 2px 0px;
     background-color: var(--sale-color);
     font-weight: 700;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 20px;
     color: #F44336;
     border-radius: 20px;
@@ -47,8 +46,8 @@
 }
 
 .description p {
-    margin: 10px 0 10px 0;
-    height: 50px;
+    margin: 5px 0 5px 0;
+    height: 100%;
 }
 
 .normal__price {
@@ -57,7 +56,7 @@
     display: flex;
     align-items: flex-end;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .notfound {
@@ -73,7 +72,7 @@
 .picture img {
     margin-top: 10px;
     margin-bottom: 5px;
-    height: 100%;
+    height: 70%;
     width: auto;
 }
 
@@ -86,7 +85,7 @@
     padding-left: 20px;
     padding-right: 20px;
     width: auto;
-    height: 100%;
+    height: 100px;
     margin-bottom: 5px;
 }
 
@@ -145,7 +144,7 @@
 }
 
 .quantityWrapper {
-    width: 90px;
+    width: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
