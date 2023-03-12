@@ -244,13 +244,15 @@
     margin: 0;
 }
 
-.rate {
+
+.reviews {
     display: flex;
     justify-content: flex-start;
-}
-
-.rateActive {
-    margin-right: 10px;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .quantityWrapper {

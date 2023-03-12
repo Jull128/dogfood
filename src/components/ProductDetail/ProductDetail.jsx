@@ -8,6 +8,7 @@ import delivery from './delivery.svg'
 import warranty from './warranty.svg'
 import { addNewProductInCart, countDecrement, countIncrement, deleteProduct, getCartSelector } from "../../redux/slices/cartSlice";
 import { Rating } from "../Rating/Rating";
+import { Reviews } from "../Reviews/Reviews";
 
 
 export function ProductDetail() {
@@ -143,6 +144,9 @@ export function ProductDetail() {
                     <span>Описание</span>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam laborum nulla, omnis totam adipisci nesciunt aliquam, eius, sed labore esse! Sit consequatur non libero hic. Blanditiis odit sapiente fugiat?</p>
                 </div>
+                <hr />
+                <div className={style.reviews}>Отзывы и вопросы о товаре</div>
+                <div><Reviews /></div>
             </div>
         </div>
     )
