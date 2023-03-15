@@ -121,6 +121,20 @@ class Api {
         })
         return res.json()
     }
+
+    async addReviewById(id, token, values) {
+        const res = await fetch(`${this.url}/products/review/${id}`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token,
+            },
+            body: JSON.stringify(values),
+        })
+
+        return res.json()
+    }
 }
 
 const api = new Api('9-gr');
