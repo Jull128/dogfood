@@ -224,6 +224,21 @@
     height: 100%;
 }
 
+.btn__addReview {
+    height: 35px;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border: 2px solid rgb(250, 228, 105);
+    border-radius: 25px;
+    padding: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
 .old__price {
     font-size: 12px;
     font-weight: 400;
@@ -253,6 +268,12 @@
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: 600;
+}
+
+.title__addReview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .quantityWrapper {

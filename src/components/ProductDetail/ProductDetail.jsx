@@ -9,13 +9,19 @@ import warranty from './warranty.svg'
 import { addNewProductInCart, countDecrement, countIncrement, deleteProduct, getCartSelector } from "../../redux/slices/cartSlice";
 import { Rating } from "../Rating/Rating";
 import { Reviews } from "../Reviews/Reviews";
+import { useState } from "react";
 
 
 export function ProductDetail() {
     const { id } = useParams();
     const token = useSelector(getTokenSelector);
-    const dispatch = useDispatch()
-    const cart = useSelector(getCartSelector)
+    const dispatch = useDispatch();
+    const cart = useSelector(getCartSelector);
+    const [isAddReviewModalOpen, setIsAddReviewModalOpen] = useState(false);
+
+    const openAddReviewModalHandler = () => {
+        setIsAddReviewModalOpen(true)
+    }
 
     function addProductInCartHandler() {
         dispatch(addNewProductInCart({ id }))
@@ -45,6 +51,7 @@ export function ProductDetail() {
         queryFn: () => api.getProductById(id, token),
         enabled: !!token,
     })
+
 
     const discount_price = Math.round(product?.price - product?.price * product?.discount / 100);
     const isInCart = (productList) => cart.find((product) => product.id === productList)
@@ -145,7 +152,10 @@ export function ProductDetail() {
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam laborum nulla, omnis totam adipisci nesciunt aliquam, eius, sed labore esse! Sit consequatur non libero hic. Blanditiis odit sapiente fugiat?</p>
                 </div>
                 <hr />
-                <div className={style.reviews}>Отзывы и вопросы о товаре</div>
+                <div className={style.title__addReview}>
+                    <div className={style.reviews}>Отзывы и вопросы о товаре</div>
+                    <button className={style.btn__addReview} onClick={setIsAddReviewModalOpen} type='button'>Добавить отзыв</button>
+                </div>
                 <div><Reviews /></div>
             </div>
         </div>

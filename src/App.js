@@ -16,12 +16,12 @@ function App() {
 
 
   useEffect(() => {
-    if (token) {
+    if (!token) {
       navigate('/products');
     }
   }, [token]);
 
-  const path = window.location.pathname
+  const path = window?.location.pathname
 
   return (
     <Layout className={style.layout}>

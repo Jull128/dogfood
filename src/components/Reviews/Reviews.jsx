@@ -18,6 +18,7 @@ export function Reviews() {
         enabled: !!token,
     })
 
+
     return (reviews?.map((review) => (
         <div key={review['_id']} className={style.container}>
             <div className={style.avatar}><img alt="" src={review.author.avatar} /></div>
