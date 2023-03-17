@@ -19,7 +19,7 @@ function App() {
     if (!token) {
       navigate('/products');
     }
-  }, [token]);
+  }, [token, navigate]);
 
   const path = window?.location.pathname
 

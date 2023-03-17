@@ -10,6 +10,7 @@ import { addNewProductInCart, countDecrement, countIncrement, deleteProduct, get
 import { Rating } from "../Rating/Rating";
 import { Reviews } from "../Reviews/Reviews";
 import { useState } from "react";
+import { AddReviewModal } from "./AddReviewModal/AddReviewModal";
 
 
 export function ProductDetail() {
@@ -51,7 +52,6 @@ export function ProductDetail() {
         queryFn: () => api.getProductById(id, token),
         enabled: !!token,
     })
-
 
     const discount_price = Math.round(product?.price - product?.price * product?.discount / 100);
     const isInCart = (productList) => cart.find((product) => product.id === productList)
@@ -154,9 +154,13 @@ export function ProductDetail() {
                 <hr />
                 <div className={style.title__addReview}>
                     <div className={style.reviews}>Отзывы и вопросы о товаре</div>
-                    <button className={style.btn__addReview} onClick={setIsAddReviewModalOpen} type='button'>Добавить отзыв</button>
+                    <button className={style.btn__addReview} onClick={openAddReviewModalHandler} type='button'>Добавить отзыв</button>
                 </div>
                 <div><Reviews /></div>
+                <AddReviewModal
+                    isAddReviewModalOpen={isAddReviewModalOpen}
+                    setIsAddReviewModalOpen={setIsAddReviewModalOpen}
+                />
             </div>
         </div>
     )

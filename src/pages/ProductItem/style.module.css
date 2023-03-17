@@ -131,13 +131,13 @@ p.description {
 .btn:hover:not([disabled]) {
     font-size: 18px;
     background-color: rgb(250, 228, 105);
-    box-shadow: 4px 4px 2px rgb(189, 165, 33);
+    box-shadow: 0px 0px 4px rgb(68, 42, 18);
 }
 
 .btn__active:hover:not([disabled]) {
     font-size: 18px;
     background-color: rgb(68, 42, 18);
-    box-shadow: 4px 4px 2px rgb(189, 165, 33);
+    box-shadow: 0px 0px 4px rgb(68, 42, 18);
 }
 
 .old__price {
