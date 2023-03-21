@@ -40,7 +40,7 @@ export function ProductItem({
 
     return (
         <div onClick={showProductHandler} className={style.card} >
-            {tags.includes('new') ? (
+            {tags?.includes('new') ? (
                 <div className={style.tags}>
                     <span>Новинка</span>
                 </div>

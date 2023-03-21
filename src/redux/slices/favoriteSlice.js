@@ -5,11 +5,14 @@ const favoriteSlice = createSlice({
     name: 'favorite',
     initialState: initState.favorite,
     reducers: {
-        addFavotiteProduct(state, action) {
+        addFavoriteProduct(state, action) {
             const currentProduct = state.find(
                 (product) => product.id === action.payload.id,
             );
-            if (!currentProduct) state.unshift(action.payload.id)
+            if (!currentProduct) state.unshift({
+                ...action.payload,
+                count: 1,
+            })
         },
         deleteFavoriteProduct(state, action) {
             return state.filter((product) => product.id !== action.payload);
@@ -20,6 +23,6 @@ const favoriteSlice = createSlice({
     }
 })
 
-export const { addFavotiteProduct, deleteFavoriteProduct, resetFavoriteInfo } = favoriteSlice.actions;
+export const { addFavoriteProduct, deleteFavoriteProduct, resetFavoriteInfo } = favoriteSlice.actions;
 export const favoriteReducer = favoriteSlice.reducer;
 export const getFavoriteSelector = (state) => state.favorite;

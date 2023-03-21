@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { api } from "../../api/api"
-import { getFavoriteSelector } from "../../redux/slices/favotiteSlice"
+import { getFavoriteSelector } from "../../redux/slices/favoriteSlice"
 import { getTokenSelector } from "../../redux/slices/tokenSlice"
 import { ProductItem } from "../ProductItem/ProductItem"
 import style from './style.module.css'
@@ -23,7 +23,7 @@ export function FavoritePage() {
         data: products,
     } = useQuery({
         queryKey: ['favorite', favorite],
-        queryFn: () => api.getProductsByIds(favorite, token),
+        queryFn: () => api.getProductsByIds(favorite.map((product) => product.id), token),
         keepPreviousData: true,
     })
 
@@ -41,8 +41,10 @@ export function FavoritePage() {
                             pictures={product.pictures}
                             wight={product.wight}
                             discount={product.discount}
+                            tags={product.tags}
                         />
-                    ))}
+                    )
+                    )}
                 </div>
             </section>
         )

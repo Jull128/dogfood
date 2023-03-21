@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { reduxState } from "./constants";
 import { getInitState } from "./initState";
 import { cartReducer } from "./slices/cartSlice";
-import { favoriteReducer } from "./slices/favotiteSlice";
+import { favoriteReducer } from "./slices/favoriteSlice";
 import { filterReducer } from "./slices/filterSlice";
 import { tokenReducer } from "./slices/tokenSlice";
 
