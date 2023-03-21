@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { clearToken, getTokenSelector } from '../../redux/slices/tokenSlice';
-import { Search } from '../search/Search';
+import { Search } from '../Search/Search';
 import style from './style.module.css';
 import dog from './dog.svg';
 import exit from './exit.svg';
