@@ -9,13 +9,18 @@ import exit from './exit.svg';
 import catalog from './catalog.svg';
 import cartimg from './cartimg.png';
 import { getCartSelector } from '../../redux/slices/cartSlice';
+import { getFavoriteSelector } from '../../redux/slices/favotiteSlice';
 
 export function Header() {
     const token = useSelector(getTokenSelector);
     const dispatch = useDispatch()
     const cart = useSelector(getCartSelector);
+    const favorite = useSelector(getFavoriteSelector);
     const checkedProducts = cart.filter((product) => product.id)
     const totalCount = checkedProducts.reduce((acc, val) => acc + val.count, 0);
+
+    const checkedFavoriteProducts = favorite.filter((product) => product.id)
+    const totalFavoriteCount = checkedFavoriteProducts.reduce((acc, val) => acc + val.count, 0);
 
     function logoutHandler() {
         dispatch((clearToken()))
@@ -48,6 +53,16 @@ export function Header() {
                         <div className={style.cart}>{totalCount}</div>
                     </div>
                     <div className={style.text}>Корзина</div>
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to='favorite' className={style.favorite}>
+                    <div className={style.box__cart}>
+                        <i class="fa-regular fa-heart" style={{ color: "#000000", paddingLeft: '10px' }}></i>
+
+                        <div className={style.cart}>{totalFavoriteCount}</div>
+                    </div>
+                    <div className={style.text}>Избранное</div>
                 </NavLink>
             </li>
 

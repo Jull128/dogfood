@@ -33,7 +33,9 @@ export function CartItem({
     function deleteHandler() {
         dispatch(deleteProduct(id))
     }
-
+    function addFavoriteHandler() {
+        dispatch(addFavoriteHandler(id))
+    }
     function isCheckedHandler() {
         dispatch(changeStatusIsChecked(id))
     }
@@ -94,7 +96,7 @@ export function CartItem({
 
             </div>
             <div className={style.button} >
-                <span ><img src={favorite} alt='В избранное' /></span>
+                <span onClick={addFavoriteHandler}><img src={favorite} alt='В избранное' /></span>
                 <span onClick={deleteHandler}><img src={trash} alt='Удалить' /></span>
             </div>
         </div>
