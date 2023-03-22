@@ -8,7 +8,7 @@
     list-style: none;
     background-color: rgb(250, 228, 105);
     gap: 30px;
-    padding: 15px 15%;
+    padding: 15px 20%;
     margin: 0;
     height: 70px;
     min-width: 100vw;
@@ -94,4 +94,10 @@
     color: black;
     font-size: 12px;
     font-weight: 600;
+}
+
+@media screen and (max-width: 1280px) {
+    .header  {
+        padding: 15px 15%;
+    }
 }

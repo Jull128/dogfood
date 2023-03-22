@@ -24,7 +24,7 @@ export function CartPage() {
     } = useQuery({
         queryKey: ['cart', cart],
         queryFn: () => api.getProductsByIds(cart.map((product) => product.id), token),
-        enabled: !!(token),
+        enabled: !!token,
     })
 
     const checkedProducts = cart.filter((product) => product.isChecked).filter((cartProduct) => products && products.find((product) => cartProduct.id === product['_id']));

@@ -5,8 +5,15 @@
     gap: 20px;
     grid-template-columns: repeat(4, 1fr);
     margin-top: 20px;
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 20%;
+    margin-right: 20%;
     margin-bottom: 20px;
     font-family: 'Montserrat', sans-serif;
+}
+
+@media screen and (max-width: 1280px) {
+    .products {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
 }
