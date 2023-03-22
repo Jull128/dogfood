@@ -15,7 +15,7 @@ export function CartPage() {
 
     useEffect(() => {
         if (!token) {
-            navigate('/');
+            navigate('/products');
         }
     }, [token, navigate]);
 

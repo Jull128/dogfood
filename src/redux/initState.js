@@ -17,6 +17,8 @@ export const initState = {
 
     cart: [],
 
+    favorite: [],
+
 }
 
 export const getInitState = () => {

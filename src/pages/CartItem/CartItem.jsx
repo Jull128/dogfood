@@ -4,6 +4,7 @@ import { deleteProduct, changeStatusIsChecked, getCartSelector, countIncrement, 
 import style from './style.module.css'
 import trash from './trash.png'
 import favorite from './favorite.png'
+import { addFavoriteProduct } from "../../redux/slices/favoriteSlice";
 
 
 export function CartItem({
@@ -33,7 +34,9 @@ export function CartItem({
     function deleteHandler() {
         dispatch(deleteProduct(id))
     }
-
+    function addFavoriteHandler() {
+        dispatch(addFavoriteProduct({ id }))
+    }
     function isCheckedHandler() {
         dispatch(changeStatusIsChecked(id))
     }
@@ -94,7 +97,7 @@ export function CartItem({
 
             </div>
             <div className={style.button} >
-                <span ><img src={favorite} alt='В избранное' /></span>
+                <span onClick={addFavoriteHandler}><img src={favorite} alt='В избранное' /></span>
                 <span onClick={deleteHandler}><img src={trash} alt='Удалить' /></span>
             </div>
         </div>

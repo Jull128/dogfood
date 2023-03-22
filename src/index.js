@@ -11,6 +11,7 @@ import { store } from './redux/store';
 import { Provider } from 'react-redux';
 import { ProductDetail } from './components/ProductDetail/ProductDetail'
 import { CartPage } from './pages/CartPage/CartPage';
+import { FavoritePage } from './pages/FavoritePage/FavoritePage'
 
 const queryClient = new QueryClient()
 
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/cart',
         element: <CartPage />
+      },
+      {
+        path: '/favorite',
+        element: <FavoritePage />
       },
     ]
   },

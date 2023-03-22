@@ -29,6 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 24px;
 }
 
 .cart {
@@ -48,6 +49,13 @@
     font-size: 12px;
     font-weight: 600;
     background-color: rgb(244, 75, 75);
+}
+
+.favorite {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .search {
