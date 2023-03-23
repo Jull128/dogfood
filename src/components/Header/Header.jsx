@@ -1,7 +1,7 @@
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import { clearToken, getTokenSelector } from '../../redux/slices/tokenSlice';
+import { clearToken, getTokenSelector, getUserSelector } from '../../redux/slices/tokenSlice';
 import { Search } from '../Search/Search';
 import style from './style.module.css';
 import dog from './dog.svg';
@@ -19,9 +19,10 @@ export function Header() {
     const favorite = useSelector(getFavoriteSelector);
     const checkedProducts = cart.filter((product) => product.id)
     const totalCount = checkedProducts.reduce((acc, val) => acc + val.count, 0);
-
     const totalFavoriteCount = favorite.reduce((acc, val) => acc + val.count, 0);
-    console.log(totalFavoriteCount);
+    const user = useSelector(getUserSelector)
+    const userName = user.name.replace(/ .*/, '');
+
     function logoutHandler() {
         dispatch((clearToken()))
     }
@@ -31,7 +32,7 @@ export function Header() {
             <li>
                 <NavLink to='products'>
                     <img alt='' className={style.link__logo} src={catalog} />
-                    <p className={style.text}>Продукты</p>
+                    <p className={style.text}>Каталог</p>
                 </NavLink>
             </li>
             <li className={style.search} >
@@ -41,7 +42,7 @@ export function Header() {
                 <NavLink to='users/me'>
                     <div className={style.box}>
                         <img alt='' className={style.link__logo} src={dog} />
-                        <p className={style.text}>Профиль</p>
+                        <p className={style.text}>{userName}</p>
                     </div>
                 </NavLink>
             </li>

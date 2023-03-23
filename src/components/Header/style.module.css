@@ -103,7 +103,8 @@
     text-decoration: none;
     color: black;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
 }
 
 @media screen and (max-width: 1280px) {

@@ -48,24 +48,24 @@ export function ProductItem({
 
     return (
         <div onClick={showProductHandler} className={style.card} >
-            {tags?.includes('new') ? (
-                <div className={style.tags}>
-                    <span>Новинка</span>
+            <div className={style.title_box}>
+                {tags?.includes('new') ? (
+                    <div className={style.tags}>
+                        <span>Новинка</span>
+                    </div>
+                ) : (
+                    ''
+                )}
+                <div className={style.picture}>
+                    <img
+                        alt={name}
+                        src={pictures} />
                 </div>
-            ) : (
-                ''
-            )}
-            <div className={style.picture}>
-                <img
-                    alt={name}
-                    src={pictures} />
-            </div>
-            <div className={style.description}>
 
                 {discount ? (
-                    <div >
+                    <div className={style.box__price}>
                         <h3 className={style.old__price}>{price} ₽</h3>
-                        <span className={style.discount}>{discount_price} ₽</span>
+                        <p className={style.discount}>{`${discount_price} ₽`}</p>
                     </div>
 
                 ) : (
@@ -73,7 +73,10 @@ export function ProductItem({
                         <h3 className={style.normal__price}>{price} ₽</h3>
                     </div>
                 )}
-                <p>{name}</p>
+                <p className={style.name}>{name}</p>
+            </div>
+            <div className={style.description}>
+
                 <div className={style.btn_box}>
                     <button onClick={isInCart(id) ? deleteHandler : addProductInCartHandler} className={isInCart(id) ? style.btn__active : style.btn}>
                         {isInCart(id) ? (
