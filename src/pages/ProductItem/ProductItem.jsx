@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addNewProductInCart, deleteProduct, getCartSelector } from "../../redux/slices/cartSlice";
+import { addFavoriteProduct, deleteFavoriteProduct, getFavoriteSelector } from "../../redux/slices/favoriteSlice";
 import { getUserSelector } from "../../redux/slices/tokenSlice";
 import style from './style.module.css'
 
@@ -12,20 +13,26 @@ export function ProductItem({
     const navigate = useNavigate()
     const token = useSelector(getUserSelector)
     const cart = useSelector(getCartSelector)
-
-    function addProductInCartHandler() {
-        dispatch(addNewProductInCart({ id }))
-    }
-
-    function deleteHandler() {
-        dispatch(deleteProduct(id))
-    }
+    const favorite = useSelector(getFavoriteSelector);
 
     useEffect(() => {
         if (!token) {
             navigate('/');
         }
     }, [token, navigate]);
+
+    function addProductInCartHandler() {
+        dispatch(addNewProductInCart({ id }))
+    }
+    function deleteHandler() {
+        dispatch(deleteProduct(id))
+    }
+    function addFavoriteHandler() {
+        dispatch(addFavoriteProduct({ id }))
+    }
+    function deleteFavoriteHandler() {
+        dispatch(deleteFavoriteProduct({ id }))
+    }
 
     function showProductHandler(event) {
         if (
@@ -37,6 +44,7 @@ export function ProductItem({
 
     const discount_price = Math.round(price - price * discount / 100);
     const isInCart = (productList) => cart.find((product) => product.id === productList)
+    const isInFavorite = (favoriteList) => favorite.find((product) => product.id === favoriteList)
 
     return (
         <div onClick={showProductHandler} className={style.card} >
@@ -66,13 +74,22 @@ export function ProductItem({
                     </div>
                 )}
                 <p>{name}</p>
-                <button onClick={isInCart(id) ? deleteHandler : addProductInCartHandler} className={isInCart(id) ? style.btn__active : style.btn}>
-                    {isInCart(id) ? (
-                        <p className={style.btn__text}>В корзине</p>
-                    ) : (
-                        <p className={style.btn__text}>В корзину</p>
-                    )}
-                </button>
+                <div className={style.btn_box}>
+                    <button onClick={isInCart(id) ? deleteHandler : addProductInCartHandler} className={isInCart(id) ? style.btn__active : style.btn}>
+                        {isInCart(id) ? (
+                            <p className={style.btn__text}>В корзине</p>
+                        ) : (
+                            <p className={style.btn__text}>В корзину</p>
+                        )}
+                    </button>
+                    <button onClick={isInFavorite(id) ? deleteFavoriteHandler : addFavoriteHandler} className={style.btnFavorite}>
+                        {isInFavorite(id) ? (
+                            <i className="fa-solid fa-heart" style={{ color: "#f8104b" }}></i>
+                        ) : (
+                            <i className="fa-regular fa-heart"></i>
+                        )}
+                    </button>
+                </div>
             </div>
         </div>
     )

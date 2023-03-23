@@ -15,7 +15,7 @@ const favoriteSlice = createSlice({
             })
         },
         deleteFavoriteProduct(state, action) {
-            return state.filter((product) => product.id !== action.payload);
+            return state.filter((product) => product.id !== action.payload.id);
         },
         resetFavoriteInfo() {
             return initState.favorite

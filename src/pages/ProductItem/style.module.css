@@ -94,6 +94,12 @@ p.description {
     line-height: 20px;
 }
 
+.btn_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .btn {
     padding: 10px 14px;
     font-weight: 600;
@@ -122,6 +128,13 @@ p.description {
     border-style: none;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
+}
+
+.btnFavorite {
+    border-style: none;
+    background-color: white;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .btn__text {
