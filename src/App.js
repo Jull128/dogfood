@@ -15,11 +15,11 @@ function App() {
   const token = useSelector(getTokenSelector)
 
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     navigate('/products');
-  //   }
-  // }, [token, navigate]);
+  useEffect(() => {
+    if (!token) {
+      navigate('/products');
+    }
+  }, [token, navigate]);
 
   const path = window?.location.pathname
 

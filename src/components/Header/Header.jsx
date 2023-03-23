@@ -8,6 +8,7 @@ import dog from './dog.svg';
 import exit from './exit.svg';
 import catalog from './catalog.svg';
 import cartimg from './cartimg.png';
+import favoriteImg from './favorite.png';
 import { getCartSelector } from '../../redux/slices/cartSlice';
 import { getFavoriteSelector } from '../../redux/slices/favoriteSlice';
 
@@ -29,7 +30,7 @@ export function Header() {
         <ul className={style.header}>
             <li>
                 <NavLink to='products'>
-                    <img alt='Каталог' className={style.link__logo} src={catalog} />
+                    <img alt='' className={style.link__logo} src={catalog} />
                     <p className={style.text}>Продукты</p>
                 </NavLink>
             </li>
@@ -39,7 +40,7 @@ export function Header() {
             <li>
                 <NavLink to='users/me'>
                     <div className={style.box}>
-                        <img alt='Личный кабинет' className={style.link__logo} src={dog} />
+                        <img alt='' className={style.link__logo} src={dog} />
                         <p className={style.text}>Профиль</p>
                     </div>
                 </NavLink>
@@ -47,7 +48,7 @@ export function Header() {
             <li>
                 <NavLink to='cart'>
                     <div className={style.box__cart}>
-                        <img alt='Корзина' className={style.link__logo} src={cartimg} />
+                        <img alt='' className={style.link__logo} src={cartimg} />
 
                         <div className={style.cart}>{totalCount}</div>
                     </div>
@@ -57,8 +58,7 @@ export function Header() {
             <li>
                 <NavLink to='favorite' className={style.favorite}>
                     <div className={style.box__cart}>
-                        <i className="fa-regular fa-heart" style={{ color: "#000000", paddingLeft: '10px' }}></i>
-
+                        <img alt='' className={style.link__logo} src={favoriteImg} />
                         <div className={style.cart}>{totalFavoriteCount}</div>
                     </div>
                     <div className={style.text}>Избранное</div>
