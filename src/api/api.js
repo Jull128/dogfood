@@ -135,6 +135,47 @@ class Api {
 
         return res.json()
     }
+
+    async addNewProduct(values, token) {
+        const res = await fetch(`${this.url}/products`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token,
+            },
+            body: JSON.stringify(values),
+        })
+
+        return res.json()
+    }
+
+    async deleteProduct(id, token) {
+        const res = await fetch(`${this.url}/products`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token,
+            },
+        })
+
+        return res.json()
+    }
+
+    async editProduct(id, token, values) {
+        const res = await fetch(`${this.url}/products/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token,
+            },
+            body: JSON.stringify(values),
+        })
+
+        return res.json()
+    }
 }
 
 const api = new Api('9-gr');

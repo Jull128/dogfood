@@ -52,7 +52,7 @@ export function ProductDetail() {
         queryFn: () => api.getProductById(id, token),
         enabled: !!token,
     })
-
+    console.log(product);
     const discount_price = Math.round(product?.price - product?.price * product?.discount / 100);
     const isInCart = (productList) => cart.find((product) => product.id === productList)
 
