@@ -42,7 +42,7 @@ export function CartItem({
     }
 
     function countIncrementHandler() {
-        dispatch(countIncrement(id));
+        dispatch(countIncrement({ id }));
     }
     function countDecrementHandler() {
         dispatch(countDecrement(id));

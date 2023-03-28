@@ -151,7 +151,7 @@ class Api {
     }
 
     async deleteProduct(id, token) {
-        const res = await fetch(`${this.url}/products`, {
+        const res = await fetch(`${this.url}/products/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',

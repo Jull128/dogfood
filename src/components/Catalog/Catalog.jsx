@@ -1,4 +1,4 @@
-import { ProductItem } from '../../pages/ProductItem/ProductItem';
+import { ProductItem } from '../ProductItem/ProductItem'
 import style from './style.module.css'
 
 export function Catalog({ search, products }) {

@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     if (!token) {
-      navigate('/products');
+      navigate('/');
     }
   }, [token, navigate]);
 

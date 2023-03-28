@@ -25,9 +25,17 @@ const cartSlice = createSlice({
 
         countIncrement(state, action) {
             const currentProduct = state.find(
-                (product) => product.id === action.payload,
+                (product) => product.id === action.payload.id,
             );
-            currentProduct.count += 1;
+            if (currentProduct) {
+                currentProduct.count++;
+            } else {
+                state.push({
+                    ...action.payload,
+                    isChecked: false,
+                    count: 1,
+                });
+            }
         },
         countDecrement(state, action) {
             const currentProduct = state.find(

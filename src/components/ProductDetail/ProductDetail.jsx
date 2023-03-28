@@ -31,7 +31,7 @@ export function ProductDetail() {
         dispatch(deleteProduct(id))
     }
     function countIncrementHandler() {
-        dispatch(countIncrement(id));
+        dispatch(countIncrement({ id }));
     }
     function countDecrementHandler() {
         dispatch(countDecrement(id));

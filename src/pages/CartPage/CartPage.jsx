@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { api } from "../../api/api"
 import { getCartSelector } from "../../redux/slices/cartSlice"
 import { getTokenSelector } from "../../redux/slices/tokenSlice"
-import { CartItem } from "../CartItem/CartItem"
+import { CartItem } from "../../components/CartItem/CartItem"
 import style from './style.module.css'
 
 export function CartPage() {
@@ -15,14 +15,14 @@ export function CartPage() {
 
     useEffect(() => {
         if (!token) {
-            navigate('/products');
+            navigate('/');
         }
     }, [token, navigate]);
 
     const {
         data: products,
     } = useQuery({
-        queryKey: ['cart', cart],
+        queryKey: ['cart', cart.length],
         queryFn: () => api.getProductsByIds(cart.map((product) => product.id), token),
         enabled: !!token,
     })
@@ -62,11 +62,6 @@ export function CartPage() {
         return totalDiscount;
     });
 
-    if (!token) {
-        return (
-            <p>Вы не авторизованы</p>
-        )
-    }
     if (!cart.length) {
         return (
             <p>Корзина пуста</p>

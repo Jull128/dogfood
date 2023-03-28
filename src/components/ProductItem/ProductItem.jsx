@@ -15,12 +15,6 @@ export function ProductItem({
     const cart = useSelector(getCartSelector)
     const favorite = useSelector(getFavoriteSelector);
 
-    useEffect(() => {
-        if (!token) {
-            navigate('/');
-        }
-    }, [token, navigate]);
-
     function addProductInCartHandler() {
         dispatch(addNewProductInCart({ id }))
     }

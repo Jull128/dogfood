@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { api } from "../../api/api"
 import { getFavoriteSelector } from "../../redux/slices/favoriteSlice"
 import { getTokenSelector } from "../../redux/slices/tokenSlice"
-import { ProductItem } from "../ProductItem/ProductItem"
+import { ProductItem } from "../../components/ProductItem/ProductItem"
 import style from './style.module.css'
 
 export function FavoritePage() {
@@ -15,7 +15,7 @@ export function FavoritePage() {
 
     useEffect(() => {
         if (!token) {
-            navigate('/products');
+            navigate('/');
         }
     }, [token, navigate]);
 
