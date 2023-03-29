@@ -140,13 +140,16 @@ class Api {
         const res = await fetch(`${this.url}/products`, {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
+
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token,
             },
             body: JSON.stringify(values),
         })
-
+        if (res.status >= 400 && res.status < 500) {
+            throw new Error(`Произошла ошибка при добавлении нового товара.
+            Проверьте отправляемые данные.`)
+          }
         return res.json()
     }
 

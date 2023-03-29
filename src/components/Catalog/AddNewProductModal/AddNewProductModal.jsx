@@ -18,6 +18,17 @@ export function AddNewProductModal({ isAddNewProductModalOpen, setIsAddNewProduc
         setIsAddNewProductModalOpen(false)
     }
 
+    const initialValues = {
+        name: '',
+        description: '',
+        price: 0,
+        discount: 0,
+        wight: '',
+        stock: 0,
+        pictures: '',
+        available: true,
+    }
+
     // const validatorAddReview = () => Yup.object({
     //     rating: Yup.string()
     //         .required('Обязательное поле'),
@@ -26,32 +37,22 @@ export function AddNewProductModal({ isAddNewProductModalOpen, setIsAddNewProduc
     // })
 
     const {
-        mutateAsync, isLoading,
+        mutateAsync: addNewProduct, isLoading, isError, error
     } = useMutation({
-        mutationFn: (values) => api.addNewProduct(token, values),
+        mutationFn: (values) => api.addNewProduct(values, token),
     })
 
     const submitHandler = async (values) => {
         console.log(1);
-        await mutateAsync(values)
-        queryClient.invalidateQueries(getQueryKey(search))
-        setIsAddNewProductModalOpen(false)
+        await addNewProduct(values)
+        queryClient.invalidateQueries(['allProduct'])
+        closeAddNewProductModalOpen()
     }
-    console.log(getQueryKey({ search }));
 
     return (
         <Modal isOpen={isAddNewProductModalOpen} closeHandler={closeAddNewProductModalOpen}>
             <Formik
-                initialValues={{
-                    pictures: '',
-                    name: '',
-                    price: 0,
-                    description: '',
-                    wight: '',
-                    discount: 0,
-                    stock: 0,
-                    available: true,
-                }}
+                initialValues={initialValues}
                 // validationSchema={validatorAddReview}
                 onSubmit={submitHandler}
             >
@@ -97,6 +98,11 @@ export function AddNewProductModal({ isAddNewProductModalOpen, setIsAddNewProduc
                         <Field name="available" type="checkbox" />
                     </div>
                     <button disabled={isLoading} type="submit">Добавить</button>
+                    {isError && (
+                        <p>
+                            {error.message}
+                        </p>
+                    )}
                 </Form>
             </Formik>
         </Modal>
