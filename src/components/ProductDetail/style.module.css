@@ -237,6 +237,44 @@
     font-weight: 500;
 }
 
+.btn_sup,
+.btn_dng {
+    padding: 10px 14px;
+    font-weight: 600;
+    width: 130px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    background-color: rgb(250, 228, 105);
+    color: rgb(68, 42, 18);
+    border-radius: 55px;
+    border-style: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn_sup:hover:not([disabled]) {
+    font-size: 18px;
+    background-color: rgb(28, 193, 86);
+    box-shadow: 0px 0px 4px rgb(104, 249, 96);
+    color: white;
+}
+
+.btn_dng:hover:not([disabled]) {
+    font-size: 18px;
+    color: white;
+    background-color: rgb(211, 65, 46);
+    box-shadow: 0px 0px 4px rgb(220, 99, 97);
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .old__price {
     font-size: 12px;
     font-weight: 400;
@@ -267,10 +305,21 @@
     font-weight: 600;
 }
 
+.title {
+    max-width: 400px;
+}
+
 .title__addReview {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.trush {
+    height: 100%;
+    width: 40px;
+    font-size: 28px;
+    cursor: pointer;
 }
 
 .quantityWrapper {
@@ -333,7 +382,7 @@
 }
 
 @media screen and (max-width: 1280px) {
-    .container  {
+    .container {
         margin-left: 15%;
         margin-right: 15%;
     }

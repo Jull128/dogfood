@@ -29,12 +29,16 @@ export function AddNewProductModal({ isAddNewProductModalOpen, setIsAddNewProduc
         available: true,
     }
 
-    // const validatorAddReview = () => Yup.object({
-    //     rating: Yup.string()
-    //         .required('Обязательное поле'),
-    //     text: Yup.string()
-    //         .required('Обязательное поле'),
-    // })
+    const validatorAddReview = () => Yup.object({
+        name: Yup.string()
+            .required('Обязательное поле'),
+        price: Yup.string()
+            .required('Обязательное поле'),
+        pictures: Yup.string()
+            .required('Обязательное поле'),
+        stock: Yup.string()
+            .required('Обязательное поле'),
+    })
 
     const {
         mutateAsync: addNewProduct, isLoading, isError, error
@@ -43,17 +47,17 @@ export function AddNewProductModal({ isAddNewProductModalOpen, setIsAddNewProduc
     })
 
     const submitHandler = async (values) => {
-        console.log(1);
         await addNewProduct(values)
         queryClient.invalidateQueries(['allProduct'])
         closeAddNewProductModalOpen()
     }
 
+
     return (
         <Modal isOpen={isAddNewProductModalOpen} closeHandler={closeAddNewProductModalOpen}>
             <Formik
                 initialValues={initialValues}
-                // validationSchema={validatorAddReview}
+                validationSchema={validatorAddReview}
                 onSubmit={submitHandler}
             >
                 <Form className={style.form}>

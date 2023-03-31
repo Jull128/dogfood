@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { api } from "../../api/api";
-import { getTokenSelector } from "../../redux/slices/tokenSlice";
+import { getTokenSelector, getUserSelector } from "../../redux/slices/tokenSlice";
 import style from './style.module.css'
 import delivery from './delivery.svg'
 import warranty from './warranty.svg'
@@ -11,17 +11,25 @@ import { Rating } from "../Rating/Rating";
 import { Reviews } from "../Reviews/Reviews";
 import { useState } from "react";
 import { AddReviewModal } from "./AddReviewModal/AddReviewModal";
+import { DeleteProductModal } from "./DeleteProductModal";
+import { getFavoriteSelector } from "../../redux/slices/favoriteSlice";
 
 
 export function ProductDetail() {
     const { id } = useParams();
     const token = useSelector(getTokenSelector);
-    const dispatch = useDispatch();
+    const user = useSelector(getUserSelector);
     const cart = useSelector(getCartSelector);
-    const [isAddReviewModalOpen, setIsAddReviewModalOpen] = useState(false);
+    const favorite = useSelector(getFavoriteSelector);
+    const dispatch = useDispatch();
 
+    const [isAddReviewModalOpen, setIsAddReviewModalOpen] = useState(false);
+    const [isDeleteProductModalOpen, setIsDeleteProductModalOpen] = useState(false);
     const openAddReviewModalHandler = () => {
         setIsAddReviewModalOpen(true)
+    }
+    const openDeleteProductHandler = () => {
+        setIsDeleteProductModalOpen(true)
     }
 
     function addProductInCartHandler() {
@@ -52,10 +60,11 @@ export function ProductDetail() {
         queryFn: () => api.getProductById(id, token),
         enabled: !!token,
     })
-    console.log(product);
+    // console.log(product.author.name);
+    // console.log(user);
     const discount_price = Math.round(product?.price - product?.price * product?.discount / 100);
     const isInCart = (productList) => cart.find((product) => product.id === productList)
-
+    const isInFavorite = (favoriteList) => favorite.find((product) => product.id === favoriteList)
     return (
 
         <div className={style.card} >
@@ -125,6 +134,20 @@ export function ProductDetail() {
                                     <p className={style.btn__text}>В корзину</p>
                                 )}
                             </button>
+                            {product?.author.name === user.name ? (
+                                <div className={style.trush} onClick={openDeleteProductHandler}>
+                                    <i className="fa-regular fa-trash-can"></i>
+                                </div>
+
+                            ) : (
+                                <div></div>
+                            )}
+                            <DeleteProductModal
+                                isDeleteProductModalOpen={isDeleteProductModalOpen}
+                                setIsDeleteProductModalOpen={setIsDeleteProductModalOpen}
+                                isInCart={isInCart}
+                                isInFavorite={isInFavorite}
+                            />
                         </div>
                         <div className={style.delivery}>
                             <img alt='Доставка' src={delivery} />

@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import style from './style.module.css';
 import { AuthForm } from './components/AuthForm/AuthForm';
 import { Layout } from 'antd';
@@ -13,7 +13,7 @@ import { getTokenSelector } from './redux/slices/tokenSlice';
 function App() {
   const navigate = useNavigate()
   const token = useSelector(getTokenSelector)
-
+  const location = useLocation()
 
   useEffect(() => {
     if (!token) {
@@ -21,14 +21,13 @@ function App() {
     }
   }, [token, navigate]);
 
-  const path = window?.location.pathname
 
   return (
     <Layout className={style.layout}>
       <Header />
       <Content >
         <Outlet />
-        {!token && path !== '/signup' && <AuthForm />}
+        {!token && location !== '/signup' && <AuthForm />}
       </Content>
       <Footer />
     </Layout>

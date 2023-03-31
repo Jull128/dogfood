@@ -19,6 +19,7 @@
     position: relative;
     min-width: 430px;
     max-width: 720px;
+    max-height: 85%;
     display: flex;
     align-items: center;
     justify-content: center;
