@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useSelector } from "react-redux"
-import { getUserSelector } from "../../../redux/slices/tokenSlice"
+import { getUserSelector } from "../../../redux/slices/userSlice"
 import * as Yup from 'yup'
 import { api } from "../../../api/api"
 import style from './style.module.css'

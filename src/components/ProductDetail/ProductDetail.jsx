@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { api } from "../../api/api";
-import { getTokenSelector, getUserSelector } from "../../redux/slices/tokenSlice";
+import { getTokenSelector, getUserSelector } from "../../redux/slices/userSlice";
 import style from './style.module.css'
 import delivery from './delivery.svg'
 import warranty from './warranty.svg'

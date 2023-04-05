@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query"
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { api } from "../../api/api"
 import { getCartSelector } from "../../redux/slices/cartSlice"
-import { getTokenSelector } from "../../redux/slices/tokenSlice"
+import { getTokenSelector } from "../../redux/slices/userSlice"
 import { CartItem } from "../../components/CartItem/CartItem"
 import style from './style.module.css'
 
@@ -64,7 +64,10 @@ export function CartPage() {
 
     if (!cart.length) {
         return (
-            <p>Корзина пуста</p>
+            <>
+                <p>Корзина пуста</p>
+                <p><Link to="/products">Каталог</Link></p>
+            </>
         )
     }
 

@@ -14,8 +14,8 @@
     min-width: 100vw;
 }
 
-.header li:nth-child(3) {
-    margin-left: auto;
+.header li:first-child {
+    margin-right: auto;
 }
 
 .box {
@@ -67,14 +67,14 @@
     font-size: 18px;
     border: none;
     width: 50%;
-    min-width: 300px;
+    min-width: 200px;
+    max-width: 500px;
     height: 50px;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-left: 100px;
 }
 
 .link {
@@ -108,7 +108,7 @@
 }
 
 @media screen and (max-width: 1280px) {
-    .header  {
+    .header {
         padding: 15px 15%;
     }
 }

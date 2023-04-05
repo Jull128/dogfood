@@ -5,7 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query'
 import { useDispatch } from 'react-redux';
-import { setToken } from '../../redux/slices/tokenSlice';
+import { setToken } from '../../redux/slices/userSlice';
 import { authValidationSchema } from './validator';
 
 export function AuthForm() {

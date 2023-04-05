@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../api/api";
-import { getUserSelector } from "../../redux/slices/tokenSlice";
+import { getUserSelector } from "../../redux/slices/userSlice";
 import style from './style.module.css'
 
 

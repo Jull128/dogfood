@@ -12,6 +12,13 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.btnFavorite {
+    border-style: none;
+    background-color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
 .checkbox {
     display: flex;
     align-items: center;

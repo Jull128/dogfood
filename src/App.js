@@ -7,7 +7,7 @@ import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { getTokenSelector } from './redux/slices/tokenSlice';
+import { getTokenSelector } from './redux/slices/userSlice';
 
 
 function App() {
@@ -15,19 +15,12 @@ function App() {
   const token = useSelector(getTokenSelector)
   const location = useLocation()
 
-  useEffect(() => {
-    if (!token) {
-      navigate('/');
-    }
-  }, [token, navigate]);
-
-
   return (
     <Layout className={style.layout}>
       <Header />
       <Content >
         <Outlet />
-        {!token && location !== '/signup' && <AuthForm />}
+        {!token && location.pathname !== '/signup' && <AuthForm />}
       </Content>
       <Footer />
     </Layout>

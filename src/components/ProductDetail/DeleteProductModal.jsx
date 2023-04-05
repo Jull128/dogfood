@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
-import { getUserSelector } from "../../redux/slices/tokenSlice"
+import { getUserSelector } from "../../redux/slices/userSlice"
 import { api } from "../../api/api"
 import style from './style.module.css'
 import { Form, Formik } from "formik"

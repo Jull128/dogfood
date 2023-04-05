@@ -12,6 +12,8 @@ import { Provider } from 'react-redux';
 import { ProductDetail } from './components/ProductDetail/ProductDetail'
 import { CartPage } from './pages/CartPage/CartPage';
 import { FavoritePage } from './pages/FavoritePage/FavoritePage'
+import { Main } from './components/Main/Main';
+import { AuthForm } from './components/AuthForm/AuthForm';
 
 const queryClient = new QueryClient()
 
@@ -24,6 +26,11 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <RegForm />,
       },
+      {
+        path: '/signin',
+        element: <AuthForm />,
+      },
+      { index: true, element: <Main /> },
       {
         path: '/products',
         element: <ProductPage />

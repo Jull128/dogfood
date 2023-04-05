@@ -4,13 +4,13 @@ import { getInitState } from "./initState";
 import { cartReducer } from "./slices/cartSlice";
 import { favoriteReducer } from "./slices/favoriteSlice";
 import { filterReducer } from "./slices/filterSlice";
-import { tokenReducer } from "./slices/tokenSlice";
+import { userReducer } from "./slices/userSlice";
 
 
 
 export const store = configureStore({
     reducer: {
-        user: tokenReducer,
+        user: userReducer,
         filter: filterReducer,
         cart: cartReducer,
         favorite: favoriteReducer,

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addNewProductInCart, deleteProduct, getCartSelector } from "../../redux/slices/cartSlice";
 import { addFavoriteProduct, deleteFavoriteProduct, getFavoriteSelector } from "../../redux/slices/favoriteSlice";
-import { getUserSelector } from "../../redux/slices/tokenSlice";
+import { getUserSelector } from "../../redux/slices/userSlice";
 import style from './style.module.css'
 
 export function ProductItem({

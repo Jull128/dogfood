@@ -5,7 +5,7 @@ import { api } from "../../api/api";
 import { AddNewProductModal } from "../../components/Catalog/AddNewProductModal/AddNewProductModal";
 import { Catalog } from "../../components/Catalog/Catalog";
 import { getSearchSelector } from "../../redux/slices/filterSlice";
-import { getTokenSelector } from "../../redux/slices/tokenSlice";
+import { getTokenSelector } from "../../redux/slices/userSlice";
 import style from './style.module.css'
 import { getQueryKey } from "./util";
 
@@ -31,7 +31,7 @@ export function ProductPage() {
     return (
         <>
             <div className={style.btn__box}><button className={style.btn} onClick={openAddNewProductModalHandler}>Добавить товар</button></div>
-            <div className={(products?.total !== 0) && style.products}>
+            <div className={products?.total !== 0 && style.products}>
                 <Catalog search={search} products={products} />
             </div>
             <AddNewProductModal

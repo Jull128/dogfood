@@ -4,7 +4,7 @@ import { deleteProduct, changeStatusIsChecked, getCartSelector, countIncrement, 
 import style from './style.module.css'
 import trash from './trash.png'
 import favorite from './favorite.png'
-import { addFavoriteProduct } from "../../redux/slices/favoriteSlice";
+import { addFavoriteProduct, deleteFavoriteProduct, getFavoriteSelector } from "../../redux/slices/favoriteSlice";
 
 
 export function CartItem({
@@ -14,7 +14,7 @@ export function CartItem({
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const cart = useSelector(getCartSelector);
-
+    const favorite = useSelector(getFavoriteSelector);
     function showProductHandler(event) {
         if (
             !event.target.closest('button') && !event.target.closest('i')
@@ -37,6 +37,9 @@ export function CartItem({
     function addFavoriteHandler() {
         dispatch(addFavoriteProduct({ id }))
     }
+    function deleteFavoriteHandler() {
+        dispatch(deleteFavoriteProduct({ id }))
+    }
     function isCheckedHandler() {
         dispatch(changeStatusIsChecked(id))
     }
@@ -49,7 +52,7 @@ export function CartItem({
     }
 
     const discount_price = Math.round(price - price * discount / 100);
-
+    const isInFavorite = (favoriteList) => favorite.find((product) => product.id === favoriteList)
     return (
         <div className={style.card} >
             <div className={style.checkbox}>
@@ -97,7 +100,12 @@ export function CartItem({
 
             </div>
             <div className={style.button} >
-                <span onClick={addFavoriteHandler}><img src={favorite} alt='В избранное' /></span>
+                <span onClick={isInFavorite(id) ? deleteFavoriteHandler : addFavoriteHandler} className={style.btnFavorite}>
+                    {isInFavorite(id) ? (
+                        <i className="fa-solid fa-heart" style={{ color: "#f8104b" }}></i>
+                    ) : (
+                        <i className="fa-regular fa-heart"></i>
+                    )}</span>
                 <span onClick={deleteHandler}><img src={trash} alt='Удалить' /></span>
             </div>
         </div>

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { api } from "../../api/api"
 import { getFavoriteSelector } from "../../redux/slices/favoriteSlice"
-import { getTokenSelector } from "../../redux/slices/tokenSlice"
+import { getTokenSelector } from "../../redux/slices/userSlice"
 import { ProductItem } from "../../components/ProductItem/ProductItem"
 import style from './style.module.css'
 
