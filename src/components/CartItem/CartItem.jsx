@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { deleteProduct, changeStatusIsChecked, getCartSelector, countIncrement, countDecrement } from "../../redux/slices/cartSlice";
 import style from './style.module.css'
 import trash from './trash.png'
-import favorite from './favorite.png'
 import { addFavoriteProduct, deleteFavoriteProduct, getFavoriteSelector } from "../../redux/slices/favoriteSlice";
 
 

@@ -48,28 +48,29 @@ export function Header() {
                             </div>
                         </NavLink>
                     </li>
+
+
+                    <li>
+                        <NavLink to='cart'>
+                            <div className={style.box__cart}>
+                                <img alt='' className={style.link__logo} src={cartimg} />
+
+                                <div className={style.cart}>{totalCount}</div>
+                            </div>
+                            <div className={style.text}>Корзина</div>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='favorite' className={style.favorite}>
+                            <div className={style.box__cart}>
+                                <img alt='' className={style.link__logo} src={favoriteImg} />
+                                <div className={style.cart}>{totalFavoriteCount}</div>
+                            </div>
+                            <div className={style.text}>Избранное</div>
+                        </NavLink>
+                    </li>
                 </>
             }
-            <li>
-                <NavLink to='cart'>
-                    <div className={style.box__cart}>
-                        <img alt='' className={style.link__logo} src={cartimg} />
-
-                        <div className={style.cart}>{totalCount}</div>
-                    </div>
-                    <div className={style.text}>Корзина</div>
-                </NavLink>
-            </li>
-            <li>
-                <NavLink to='favorite' className={style.favorite}>
-                    <div className={style.box__cart}>
-                        <img alt='' className={style.link__logo} src={favoriteImg} />
-                        <div className={style.cart}>{totalFavoriteCount}</div>
-                    </div>
-                    <div className={style.text}>Избранное</div>
-                </NavLink>
-            </li>
-
             {token && <li onClick={logoutHandler}><Link to="/">
                 <div className={style.box}>
                     <img alt='Выход' className={style.link__logo} src={exit} />

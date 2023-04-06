@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { api } from "../../api/api";
 import { AddNewProductModal } from "../../components/Catalog/AddNewProductModal/AddNewProductModal";
@@ -8,6 +8,7 @@ import { getSearchSelector } from "../../redux/slices/filterSlice";
 import { getTokenSelector } from "../../redux/slices/userSlice";
 import style from './style.module.css'
 import { getQueryKey } from "./util";
+import { useNavigate } from "react-router-dom";
 
 
 export function ProductPage() {
@@ -15,6 +16,13 @@ export function ProductPage() {
     const token = useSelector(getTokenSelector)
     const search = useSelector(getSearchSelector)
     const [isAddNewProductModalOpen, setIsAddNewProductModalOpen] = useState(false)
+
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!token) {
+            navigate('/');
+        }
+    }, [token, navigate]);
 
     const openAddNewProductModalHandler = () => {
         setIsAddNewProductModalOpen(true)

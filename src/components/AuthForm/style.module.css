@@ -1,11 +1,11 @@
 .form {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 220px);
+    height: 100%;
     width: 50%;
     justify-content: center;
     align-items: center;
-    margin: 0px auto 0px;
+    margin: 80px auto 0px;
 
 }
 
