@@ -28,14 +28,15 @@ export function Header() {
 
     return (
         <ul className={style.header}>
-            <li>
-                <NavLink to='products'>
-                    <img alt='' className={style.link__logo} src={catalog} />
-                    <p className={style.text}>Каталог</p>
-                </NavLink>
-            </li>
             {token &&
                 <>
+                    <li>
+                        <NavLink to='products'>
+                            <img alt='' className={style.link__logo} src={catalog} />
+                            <p className={style.text}>Каталог</p>
+                        </NavLink>
+                    </li>
+
                     <li className={style.search} >
                         <Search />
                     </li>
